@@ -260,7 +260,7 @@
 	}
 
 	.row > * {
-		padding: 40px 0 0 40px;
+		padding: 40px 0 0 0px;
 	}
 
 	.row {
@@ -473,7 +473,7 @@
 	@media screen and (min-width: 961px) and (max-width: 1880px) {
 
 		.row > * {
-			padding: 40px 0 0 40px;
+			padding: 40px 0 0 0px;
 		}
 
 		.row {
@@ -688,7 +688,7 @@
 	@media screen and (min-width: 961px) and (max-width: 1620px) {
 
 		.row > * {
-			padding: 40px 0 0 40px;
+			padding: 40px 0 0 0px;
 		}
 
 		.row {
@@ -2106,7 +2106,7 @@
 /* Main */
 
 	#main {
-		margin-left: 300px;
+		margin-left: 0px;
 	}
 
 		#main > section {
@@ -2178,7 +2178,6 @@
 		/* Header */
 
 			#header {
-				position: absolute;
 			    bottom: 0;
 			    overflow: auto;
 			}
