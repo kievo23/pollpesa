@@ -1963,10 +1963,7 @@
 		height: 100%;
 		left: 0;
 		overflow-y: auto;
-		position: fixed;
 		text-align: right;
-		top: 100px;
-		width: 300px;
 	}
 
 		#header .top {
@@ -2109,7 +2106,7 @@
 /* Main */
 
 	#main {
-		margin-left: 170px;
+		margin-left: 300px;
 	}
 
 		#main > section {
@@ -2181,7 +2178,9 @@
 		/* Header */
 
 			#header {
-				width: 220px;
+				position: absolute;
+			    bottom: 0;
+			    overflow: auto;
 			}
 
 		/* Footer */
@@ -2337,9 +2336,7 @@
 				height: 100%;
 				left: 0;
 				overflow-y: auto;
-				position: fixed;
 				top: 0;
-				width: 275px;
 				z-index: 10002;
 				width: 275px;
 				background: #222729 url("images/overlay.png");
