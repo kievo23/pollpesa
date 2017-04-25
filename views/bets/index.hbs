@@ -1,0 +1,79 @@
+<h1>{{title}}</h1>
+
+<div class="panel panel-warning">
+	<div class="panel panel-heading">
+		<header>
+            <h2 class="alt">{{title}} 
+        </header>
+	</div>
+	<div class="panel panel-body">
+		<table class="table table-hover bets">
+			<thead>
+				<th>ID</th>
+				<th>Amount</th>
+				<th>Win Status</th>
+				<th>Created At</th>
+				<th>Actions</th>
+			</thead>
+			<tbody>
+			{{#if bets}}
+				{{#each bets}}
+				<tr>
+					<td>{{dataValues.id}}</td>
+					<td>{{dataValues.amount}}</td>
+					<td>{{dataValues.winstatus}}</td>
+					<td>{{dataValues.createdAt}}</td>
+					<td>							
+						<button type="button"class="btn btn-success" value="{{dataValues.id}}" @click="modal({{dataValues.id}})">Details</button>
+						<button type="button"class="btn btn-warning" value="{{dataValues.id}}" @click="election({{dataValues.id}})">Run Elections</button>
+					</td>
+				</tr>
+				{{/each}}
+			{{/if}}
+			</tbody>
+		</table>
+	</div>
+	<modal v-if="showModal" @close="showModal = false">
+	    
+	    <h3 slot="header">Bet Details \{{betId}}</h3>
+	    <table slot="body" class="table table-condensed">
+          <thead>
+            <th>ID</th>
+            <th>odd</th>
+            <th>Status</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+        	<tr v-for="detail in details">
+        		<td>\{{detail.id}}</td>
+        		<td>\{{detail.odd}}</td>
+        		<td>\{{detail.status}}</td>
+        		<td>\{{detail.name}}</td>
+        		<td>\{{detail.position}}</td>
+        		<td>\{{detail.createdAt}}</td>
+        		<td></td>
+        	</tr>
+        </tbody>
+      </table>
+	  </modal>
+
+	<modal v-if="showProcess" @close="showProcess = false">
+	    
+	    <h3 slot="header">Please Wait</h3>
+	    <div slot="body" ><img src="images/computing.gif" alt="" width="300px"/>
+        </div>
+        <div slot="footer" ></div>
+	  </modal>
+	  <modal v-if="showResult" @close="showResult = false">
+	    
+	    <h3 slot="header">MY RESULTS</h3>
+	    <div slot="body" >
+	    	<img v-bind:src="rstimage" alt="" width="300px"/>
+	    	<br>
+	    	\{{result}}
+        </div>
+	  </modal>
+</div>

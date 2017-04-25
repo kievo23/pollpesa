@@ -1,0 +1,31 @@
+<h1>{{title}}</h1>
+
+<div class="panel panel-warning">
+	<div class="panel panel-heading">
+		<header>
+            <h2 class="alt">{{title}} <a href="category/create" class="btn btn-info">Create New Category</a><br></h2>
+        </header>
+	</div>
+	<div class="panel panel-body">
+		<table class="table table-hover">
+			<thead>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Actions</th>
+			</thead>
+			<tbody>
+			{{#if categories}}
+				{{#each categories}}
+					<tr>
+						<td>{{dataValues.id}}</td>
+						<td>{{dataValues.name}}</td>
+						<td>
+		          			<a href="category/update/{{dataValues.id}}">Edit</a>
+		          		</td>
+					</tr>
+				{{/each}}
+			{{/if}}
+			</tbody>
+		</table>
+	</div>
+</div>

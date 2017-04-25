@@ -1,0 +1,35 @@
+<h1>{{title}}</h1>
+
+<div class="panel panel-warning">
+	<div class="panel panel-heading">
+		<header>
+            <h2 class="alt">{{title}} <a href="region/create" class="btn btn-info">Create New Region</a><br></h2>
+        </header>
+	</div>
+	<div class="panel panel-body">
+		<table class="table table-hover">
+			<thead>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Category</th>
+          		{{#if user.role}}
+          			<th>Actions</th>
+          		{{/if}}
+			</thead>
+			<tbody>
+			{{#if regions}}
+				{{#each regions}}
+					<tr>
+						<td>{{dataValues.id}}</td>
+						<td>{{dataValues.name}}</td>
+						<td>{{dataValues.category.name}}</td>
+							<td>
+		          			<a href="region/update/{{dataValues.id}}">Edit</a>
+		          			</td>
+					</tr>
+				{{/each}}
+			{{/if}}
+			</tbody>
+		</table>
+	</div>
+</div>

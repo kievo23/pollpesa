@@ -1,0 +1,371 @@
+<!DOCTYPE HTML>
+<!--
+    Prologue by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+    <head>
+        <title>PollPesa | {{title}}</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Kelvin Chege M: AKA kickAss">
+        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/ie8.css" />
+        <link rel="stylesheet" href="/css/ie9.css" />
+        <link href="/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/prologue.css" />
+        <link rel="stylesheet" href="/css/style.css" /> 
+        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    </head>
+    <body>
+
+        <!-- Header -->
+        <div class="topper">
+            <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+
+                    <!-- Collapsed Hamburger -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <!-- Branding Image -->
+                    <a class="navbar-brand" href="/">
+                    <img src="images/pollpesa.png"> 
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="nav navbar-nav">
+                        &nbsp;
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- Authentication Links -->
+                            {{#if user}}
+                            <li><a href="#"><strong>Credits: <span id="credits" v-if="creds">{{user.credits}}</span></strong></a></li>
+                            <li><a href="/logout">Logout</a></li>
+                            {{else}}
+                            <li>
+                                <form class="form-inline" method="post" action="/login">
+                                  <div class="form-group">
+                                    <label class="sr-only" for="exampleInputEmail3">Email address</label>
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Phone">
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="sr-only" for="exampleInputPassword3">Password</label>
+                                    <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                                  </div>
+                                  <button type="submit" class="btn btn-warning">Sign in</button>
+                                </form>
+                            </li>
+
+                            <li><a href="/register">Sign Up</a></li>
+                            {{/if}}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        </div>
+            <div id="header">
+
+                <div class="top">
+
+                    <!-- Logo -->
+                        <div id="logo">
+                            <span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
+                            {{#if user}}
+                            <h1 id="title">{{user.names}}</h1>
+                            <p>Blue Belt</p>
+                            {{else}}
+                            <h1>PollPesa</h1>
+                            <p>Quickly Place a bet</p>
+                            {{/if}}
+                        </div>
+
+                    <!-- Nav -->
+                        <nav id="nav">
+                            <!--
+
+                                Prologue's nav expects links in one of two formats:
+
+                                1. Hash link (scrolls to a different section within the page)
+
+                                   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+                                2. Standard link (sends the user to another page/site)
+
+                                   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+                            -->
+                            <ul>
+                                <li><a href="/" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>                                
+                                <li><a href="/candidate" id="candidate-link" class="skel-layers-ignoreHref"><span class="icon fa-users">Candidates</span></a></li>
+                                {{#if user}}
+                                <li><a href="/bet" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Bets 
+                                    {{#if betCount}}
+                                        <div class="badge">{{betCount}}</div>
+                                    {{/if}}
+                                </span></a></li>
+                                {{#if user.role}}
+                                <li><a href="/candidate/create" id="candidate-link" class="skel-layers-ignoreHref"><span class="icon fa-users">New Candidate</span></a></li>
+                                <li><a href="/region#region" id="region-link" class="skel-layers-ignoreHref"><span class="icon fa-bullseye">Region</span></a></li>  
+                                <li><a href="/category#category" id="category-link" class="skel-layers-ignoreHref"><span class="icon fa-certificate">Category</span></a></li>
+                                <li><a href="#about" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">About Me</span></a></li>    
+                                 {{/if}}                           
+                                <li><a href="/logout" id="logout" class="skel-layers-ignoreHref"><span class="icon fa-sign-out">Logout</span></a></li>
+                                {{else}}
+                                
+                                {{/if}}
+                            </ul>
+                        </nav>
+
+                </div>
+
+                <div class="bottom">
+
+                    <!-- Social Icons -->
+                        <ul class="icons">
+                            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                            <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                            <li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+                            <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+                            <li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+                        </ul>
+
+                </div>
+
+            </div>
+            
+        <!-- Main -->
+            <div id="main">
+
+                <!-- Intro -->
+                    <section id="{{id}}" class="oned">
+                            {{#if errors}}
+                                {{#each errors}}
+                                    <div class="alert alert-danger">{{msg}}</div>
+                                {{/each}}
+                            {{/if}}
+                            {{#if message}}     
+                                    <div class="alert alert-info">{{message}}</div>
+                            {{/if}}
+                            {{#if success_msg}}     
+                                    <div class="alert alert-success">{{success_msg}}</div>
+                            {{/if}}
+                            {{#if error_msg}}     
+                                    <div class="alert alert-danger">{{error_msg}}</div>
+                            {{/if}}
+                            {{#if error}}     
+                                    <div class="alert alert-danger">{{error}}</div>
+                            {{/if}}
+                            <div id="detail">
+                                {{{body}}}  
+                                <br>
+                                
+                            </div>
+                            
+                    </section>
+
+            </div>
+
+            
+        <!-- Footer -->
+            <div id="footer">
+
+                <!-- Copyright -->
+                    <ul class="copyright">
+                        <li>&copy; Pollpesa. All rights reserved.</li>
+                    </ul>
+
+            </div>
+            <!-- Scripts -->
+            <script src="/js/vue.js"></script>
+            <script src="/js/jquery-1.12.4.min.js"></script>
+
+            <!-- Bootstrap Core JavaScript -->
+            <script src="/js/bootstrap.min.js"></script> 
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+            <script src="/js/lodash.min.js"></script>
+            <script src="/js/jquery.dataTables.min.js"></script>
+            <script src="/js/skel.min.js"></script>
+            <script src="/js/util.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+            <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $('.candidates').DataTable();
+                    $('.bets').DataTable({
+                        "order": [[ 3, "desc" ]]
+                    } );
+                });
+            </script>   
+                <script type="text/x-template" id="modal-template">
+                  <transition name="modal">
+                    <div class="modal-mask">
+                      <div class="modal-wrapper">
+                        <div class="modal-container">
+
+                          <div class="modal-header">
+                            <slot name="header">
+                              default header
+                            </slot>
+                          </div>
+
+                          <div class="modal-body">
+                            <slot name="body">
+                              
+                            </slot>
+                          </div>
+
+                          <div class="modal-footer">
+                            <slot name="footer">
+                              <button class="btn btn-default modal-default-button" @click="$emit('close')">
+                                close
+                              </button>
+                            </slot>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </transition>
+                </script>         
+            <script>
+                Vue.component('modal', {
+                  template: '#modal-template'
+                });
+                function shuffle(array) {
+                  var currentIndex = array.length, temporaryValue, randomIndex;
+
+                  // While there remain elements to shuffle...
+                  while (0 !== currentIndex) {
+
+                    // Pick a remaining element...
+                    randomIndex = Math.floor(Math.random() * currentIndex);
+                    currentIndex -= 1;
+
+                    // And swap it with the current element.
+                    temporaryValue = array[currentIndex];
+                    array[currentIndex] = array[randomIndex];
+                    array[randomIndex] = temporaryValue;
+                  }
+
+                  return array;
+                }
+                var app = new Vue({
+                    el: '#detail',
+                    data: {
+                        cid: [],
+                        msg: 'Welcome',
+                        candidates: [],
+                        price: 0,
+                        showModal: false,
+                        showProcess: false,
+                        showResult: false,
+                        betId: 0,
+                        details: [],
+                        prop: 'one',
+                        result: '',
+                        rstimage: '',
+                        userId: ''
+                    },
+                    computed: {
+                        totalAmount : function(){
+                            var amount = 0;
+                            for (var i = this.candidates.length - 1; i >= 0; i--) {
+                                amount += parseFloat(this.candidates[i].odd);
+                            }
+                            return parseInt(amount * this.price);
+                        }
+                    },
+                    methods: {
+                        election: function(betId){
+                            var app = this;
+                            this.showProcess=true;
+                            axios.post('/bet/compute',{
+                                betId: betId
+                            }).then(function(response){
+                                app.showProcess=false;
+                                app.showResult=true;
+                                if(response.data==1){
+                                    app.rstimage = "images/win2.gif";
+                                    app.result = "Congratulations you won!!";
+                                }else if(response.data==0){
+                                    app.rstimage = "images/loss.gif";
+                                    app.result = "Sorry, try again";
+                                }else{
+                                    app.result = "Already run";
+                                }
+                            });
+                        },
+                        probfunction: function(){                            
+                            var arrayNum = [];
+                            for (var i = 10 - 1; i >= 0; i--) {
+                                arrayNum.push('wanjiru');
+                            } 
+                            for (var i = 80 - 1; i >= 0; i--) {
+                                arrayNum.push('Sonko');
+                            } 
+                            for (var i = 10 - 1; i >= 0; i--) {
+                                arrayNum.push('Kidero');
+                            }  
+                            arrayNum = shuffle(arrayNum);
+                            var singleRandom = arrayNum[Math.floor(Math.random() * arrayNum.length)];
+                            this.prop = singleRandom;
+                        },
+                        modal: function(betId){
+                            this.betId = betId;
+                            this.showModal=true;
+                            var app = this;
+                            axios.post('/bet/fetch', {
+                                betId: betId
+                              })
+                              .then(function (response) {
+                                console.log(response.data);
+                                app.details = response.data;
+                              })
+                              .catch(function (error) {
+                                console.log(error);
+                              });
+                        },
+                        candidate: function(){
+                            var app = this;
+                            axios.post('/users/fetch', {
+                                candidates: app.cid
+                              })
+                              .then(function (response) {
+                                app.candidates = response.data;
+                              })
+                              .catch(function (error) {
+                                console.log(error);
+                              });
+                        },
+                        placeBet: function(){
+                            var ap = this;
+                            axios.post('/bet/place', {
+                                candidates: ap.cid,
+                                price: ap.price
+                              })
+                              .then(function (response) {
+                                console.log(response.body);
+                              })
+                              .catch(function (error) {
+                                console.log(error);
+                              });
+                        }
+                    }
+                })
+            </script>
+    </body>
+</html>

@@ -1,0 +1,133 @@
+<div id="mainnotlogged">
+                <section id="" class="oned">
+                    <div class="container">
+                        <div class="row text-center">
+                            <strong class="text-center">True Distinct Polls</strong>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-image waves-effect waves-block waves-light">
+                                      <i class="fa fa-comments fa-3x" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="card-reveal">
+                                      <span class="card-title grey-text text-darken-4">Last 24 Hours
+                                      </span>
+                                        {{#if yesterdays}}
+                                        <table class="table table-hover table-condensed table-responsive">
+                                          <thead>
+                                          <tr>
+                                            <th>Votes</th>
+                                            <th>Name</th>
+                                            <th>Odd</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                        {{#each yesterdays}}
+                                          <tr>
+                                            <td>{{count}}</td>
+                                            <td>{{name}}</td>
+                                            <td>{{odd}}</td>
+                                          </tr>
+                                        {{/each}}
+                                        </table>
+                                        {{/if}}
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="col-md-3">
+                                 <div class="card">
+                                    <div class="card-image waves-effect waves-block waves-light">
+                                      <i class="fa fa-certificate fa-3x" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="card-reveal">
+                                      <span class="card-title grey-text text-darken-4">Last Seven days
+                                      </span>
+                                      {{#if lastSevenDays}}
+                                        <table class="table table-hover table-condensed table-responsive">
+                                          <thead>
+                                          <tr>
+                                            <th>Votes</th>
+                                            <th>Name</th>
+                                            <th>Odd</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                        {{#each lastSevenDays}}
+                                          <tr>
+                                            <td>{{count}}</td>
+                                            <td>{{name}}</td>
+                                            <td>{{odd}}</td>
+                                          </tr>
+                                        {{/each}}
+                                        </table>
+                                        {{/if}}
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-image waves-effect waves-block waves-light">
+                                      <i class="fa fa-comments-o fa-3x" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="card-reveal">
+                                      <span class="card-title grey-text text-darken-4">Last Week
+                                      </span>
+                                        {{#if lastweek}}
+                                        <table class="table table-hover table-condensed table-responsive">
+                                          <thead>
+                                          <tr>
+                                            <th>Votes</th>
+                                            <th>Name</th>
+                                            <th>Odd</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                        {{#each lastweek}}
+                                          <tr>
+                                            <td>{{count}}</td>
+                                            <td>{{name}}</td>
+                                            <td>{{odd}}</td>
+                                          </tr>
+                                        {{/each}}
+                                        </table>
+                                        {{/if}}
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-image waves-effect waves-block waves-light">
+                                      <i class="fa fa-database fa-3x" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="card-reveal">
+                                      <span class="card-title grey-text text-darken-4">Overall
+                                      </span>
+                                        {{#if overall}}
+                                        <table class="table table-hover table-condensed table-responsive">
+                                          <thead>
+                                          <tr>
+                                            <th>Votes</th>
+                                            <th>Name</th>
+                                            <th>Odd</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                        {{#each overall}}
+                                          <tr>
+                                            <td>{{count}}</td>
+                                            <td>{{name}}</td>
+                                            <td>{{odd}}</td>
+                                          </tr>
+                                        {{/each}}
+                                        </table>
+                                        {{/if}}
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                          
+                         
+                    </div>
+                </section>
+            </div>
