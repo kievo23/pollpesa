@@ -3,6 +3,7 @@ body {
 }
 .topper nav{
       background: #222629 url(images/overlay.png);
+      padding-top: 10px;
 }
 .navbar-default {
     background-color: #f8f8f8;
