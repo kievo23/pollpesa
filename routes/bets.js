@@ -58,7 +58,7 @@ router.post('/place',roles.auth,function(req,res,next){
         this.totalWinnings = parseInt(amount * price);
         this.candidates = candidates;
 
-        var user = User.findById(req.user.id).then(function(usr){
+        User.findById(req.user.id).then(function(usr){
         	if(usr.credits > price){
         		Bet.create({
 		           amount: this.totalWinnings,
