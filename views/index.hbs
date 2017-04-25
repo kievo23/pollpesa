@@ -1,14 +1,11 @@
 <div id="mainnotlogged">
-                <section id="" class="oned">
-                    <div class="container">
-                        <div class="row text-center">
-                            <strong class="text-center">True Distinct Polls</strong>
+                        <div class="row text-center">True Distinct Polls
                         </div>
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-sm-12">
                                 <div class="card">
                                     <div class="card-image waves-effect waves-block waves-light">
-                                      <i class="fa fa-comments fa-3x" aria-hidden="true"></i>
+                                      <i class="fa fa-hand-scissors-o fa-3x" aria-hidden="true"></i>
                                     </div>
                                     <div class="card-reveal">
                                       <span class="card-title grey-text text-darken-4">Last 24 Hours
@@ -35,7 +32,7 @@
                                     </div>
                                   </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-sm-12">
                                  <div class="card">
                                     <div class="card-image waves-effect waves-block waves-light">
                                       <i class="fa fa-certificate fa-3x" aria-hidden="true"></i>
@@ -65,10 +62,10 @@
                                     </div>
                                   </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3  col-sm-12">
                                 <div class="card">
                                     <div class="card-image waves-effect waves-block waves-light">
-                                      <i class="fa fa-comments-o fa-3x" aria-hidden="true"></i>
+                                      <i class="fa fa-bar-chart-o fa-3x" aria-hidden="true"></i>
                                     </div>
                                     <div class="card-reveal">
                                       <span class="card-title grey-text text-darken-4">Last Week
@@ -95,7 +92,7 @@
                                     </div>
                                   </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-sm-12">
                                 <div class="card">
                                     <div class="card-image waves-effect waves-block waves-light">
                                       <i class="fa fa-database fa-3x" aria-hidden="true"></i>
@@ -126,8 +123,199 @@
                                   </div>
                             </div>
                         </div>
-                          
-                         
-                    </div>
-                </section>
             </div>
+            <div class="row">
+  <div class="col-md-10  col-sm-12">
+  <div class="panel panel-warning">
+    {{#if pendingBets}}
+      <div class="panel panel-primary">
+      <div class="panel panel-body">
+      <h3> Pending bets </h3>
+        <table class="table table-hover">
+          <thead>
+            <th>ID</th>
+            <th>Amount</th>
+            <th>Win Status</th>
+            <th>Created At</th>
+            <th>Actions</th>
+          </thead>
+          <tbody>       
+            {{#each pendingBets}}
+            <tr>
+              <td>{{dataValues.id}}</td>
+              <td>{{dataValues.amount}}</td>
+              <td>{{dataValues.winstatus}}</td>
+              <td>{{dataValues.createdAt}}</td>
+              <td>              
+                <button type="button"class="btn btn-success" value="{{dataValues.id}}" @click="modal({{dataValues.id}})">Details</button>
+                <button type="button"class="btn btn-warning" value="{{dataValues.id}}" @click="election({{dataValues.id}})">Run Elections</button>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      </div>
+      {{/if}}
+    
+    <div class="panel panel-body">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+         <p class="text-center">Presidential</p>
+        <table class="table table-hover table-condensed table-responsive candidates">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Odds</th>
+            <th>Actions</th>
+            <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+          {{#if presidents}}
+            {{#each presidents}}
+              <tr>
+                <td>{{dataValues.name}}</td>
+                <td>{{dataValues.position}}</td>
+                <td>{{dataValues.odd}}</td>
+                <td>
+                   <div id="ck-button">
+                    <label>
+                        <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>Bet</span>
+                     </label>
+                  </div>
+                </td>
+                <td>
+                        <a href="candidate/update/{{dataValues.id}}">Edit</a>
+                      </td>
+              </tr>
+            {{/each}}
+          {{/if}}
+          </tbody>
+        </table>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <p class="text-center">County</p>
+        <table class="table table-hover table-condensed table-responsive candidates">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Region</th>
+            <th>Odds</th>
+            <th>Actions</th>
+            <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+          {{#if candidates}}
+            {{#each candidates}}
+              <tr>
+                <td>{{dataValues.name}}</td>
+                <td>{{dataValues.position}}</td>
+                <td>{{dataValues.region.name}}</td>
+                <td>{{dataValues.odd}}</td>
+                <td>
+                   <div id="ck-button">
+                    <label>
+                        <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>Bet</span>
+                     </label>
+                  </div>
+                </td>
+                <td>
+                        <a href="candidate/update/{{dataValues.id}}">Edit</a>
+                      </td>
+              </tr>
+            {{/each}}
+          {{/if}}
+          </tbody>
+        </table>
+         </div>
+
+      </div>
+    </div>
+    
+  </div>
+   </div>
+   <div class="col-md-2 col-sm-12 nopadding" style="padding: 2px !important">
+    <div class="panel" v-if="candidates.length > 0">
+          <hr><h3>Bet Slip</h3> <i class="fa fa-money fa-2x" aria-hidden="true"></i>
+          <ul v-if="candidates">
+            <table class="table table-hover table-condensed table-responsive">
+            <thead>
+              <th>Names</th><th>Position</th><th>Odds</th>
+            </tbody>
+            <tr v-for="candidate in candidates">
+            <td>\{{candidate.name}} </td><td>  \{{candidate.position}} </td><td> \{{candidate.odd}}</td>
+            </tr>
+            </table>
+          </ul>
+          <div class="panel panel-danger">
+            <div class="panel panel-heading">
+            <form method="post" action="/bet/place" class="form-inline">
+              <div class="form-group">
+                  Amount to Bet 
+                </div>
+                <div class="form-group">
+                  <input type="text" name="price" id="price" v-model="price" placeholder="Amount to Bet"> 
+                  <input type="hidden" name="cids" id="cids" v-model="cid">
+                </div>
+                <div class="form-group alert alert-warning">
+                    Anticipated Amount: \{{totalAmount}}
+               </div>
+                <div class="form-group" v-if="price >= 100">                
+                    <button type="submit" class="btn btn-primary">Place Bet</button>
+                  </div>
+                </form>
+               
+               </div>
+            </div>
+          </div>
+    </div>
+   </div>
+   <modal v-if="showModal" @close="showModal = false">
+      
+      <h3 slot="header">Bet Details \{{betId}}</h3>
+      <table slot="body" class="table table-condensed">
+          <thead>
+            <th>ID</th>
+            <th>odd</th>
+            <th>Status</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+          <tr v-for="detail in details">
+            <td>\{{detail.id}}</td>
+            <td>\{{detail.odd}}</td>
+            <td>\{{detail.status}}</td>
+            <td>\{{detail.name}}</td>
+            <td>\{{detail.position}}</td>
+            <td>\{{detail.createdAt}}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </modal>
+
+  <modal v-if="showProcess" @close="showProcess = false">
+      
+      <h3 slot="header">Please Wait</h3>
+      <div slot="body" ><img src="images/computing.gif" alt="" width="300px"/>
+        </div>
+        <div slot="footer" ></div>
+    </modal>
+    <modal v-if="showResult" @close="showResult = false">
+      
+      <h3 slot="header">MY RESULTS</h3>
+      <div slot="body" >
+        <img v-bind:src="rstimage" alt="" width="300px"/>
+        <br>
+        \{{result}}
+        </div>
+    </modal>
+ </div>
+

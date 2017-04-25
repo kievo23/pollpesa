@@ -58,33 +58,37 @@ router.post('/place',roles.auth,function(req,res,next){
         this.totalWinnings = parseInt(amount * price);
         this.candidates = candidates;
 
-		Bet.create({
-           amount: this.totalWinnings,
-           userId : req.user.id,
-           winstatus: 0,
-           status: 0,
-           initial: price
-		})
-		.then(function(bet){
-			candidates.forEach(function(entry) {
-				Betdetails.create({
-					odd: entry.odd,
-					status: "0",
-					betid: bet.dataValues.id,
-					candidateid: entry.id
-             	})
-             	.then(function(Details){
-             		//console.log("success!!");
-             	})
-             	.catch(function(err){
-             		console.log(err);
-             	})
-			});
-			res.redirect('/candidate');
-		})
-		.catch(function(err){
-			res.end(err);
-		})
+        var user = User.findById(req.user.id).then(function(usr){
+        	if(usr.credits > price){
+        		Bet.create({
+		           amount: this.totalWinnings,
+		           userId : req.user.id,
+		           winstatus: 0,
+		           status: 0,
+		           initial: price
+				})
+				.then(function(bet){
+					candidates.forEach(function(entry) {
+						Betdetails.create({
+							odd: entry.odd,
+							status: "0",
+							betid: bet.dataValues.id,
+							candidateid: entry.id
+		             	})
+		             	.then(function(Details){
+		             		//console.log("success!!");
+		             	})
+		             	.catch(function(err){
+		             		console.log(err);
+		             	})
+					});
+					res.redirect('/candidate');
+				})
+				.catch(function(err){
+					res.end(err);
+				})
+        	}
+        });
 	})
 	.catch(function(err){
 		res.end(err);
