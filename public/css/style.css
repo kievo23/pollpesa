@@ -141,6 +141,12 @@ td {
 background: #FAFAFA;
 text-align: center;
 }
+.no_margin{
+margin:0px !important;
+}
+.secondtopper{
+      font-size: 13px;
+}
 
 /* Cells in even rows (2,4,6...) are one color */
 tr:nth-child(even) td { background: #dadada; }

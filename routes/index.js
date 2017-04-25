@@ -41,7 +41,7 @@ router.get('/', function(req, res, next) {
   Promise.all([yesterday,lastSevenDays, lastweek, overall]).then(values => {
   		console.log(values[0]);
 	  res.render('index', { 
-	  	title: 'Express',
+	  	title: 'Kenyan Elections Virtual Bets',
 	  	id:"top",
 	  	yesterdays: values[0],
 	  	lastSevenDays: values[1],

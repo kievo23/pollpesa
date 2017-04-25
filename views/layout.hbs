@@ -26,7 +26,7 @@
 
         <!-- Header -->
         <div class="topper">
-            <nav class="navbar navbar-default navbar-static-top">
+            <nav class="navbar navbar-default navbar-static-top no_margin">
             <div class="container">
                 <div class="navbar-header">
 
@@ -72,6 +72,56 @@
                             </li>
 
                             <li><a href="/register">Sign Up</a></li>
+                            {{/if}}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        </div>
+        <div class="topper secondtopper">
+            <nav class="navbar navbar-default navbar-static-top no_margin">
+            <div class="container">
+                
+
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="nav navbar-nav">
+                        <li>
+                                <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                        </li>
+                        <li>
+                                <a href="#"><i class="fa fa-globe" aria-hidden="true"></i> News</a>
+                        </li>
+                        <li>
+                                <a href="#"><i class="fa fa-list" aria-hidden="true"></i> Results</a>
+                        </li>
+                        <li>
+                                <a href="#"><i class="fa fa-trophy" aria-hidden="true"></i> Winners</a>
+                        </li>
+                        <li>
+                                <a href="#"><i class="fa fa-filter" aria-hidden="true"></i> Statistics</a>
+                        </li>
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- Authentication Links -->
+                            {{#if user}}
+                            <li><a href="#"><strong>Credits: <span id="credits" v-if="creds">{{user.credits}}</span></strong></a></li>
+                            <li><a href="/logout">Logout</a></li>
+                            {{else}}
+                            <li>
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-phone" aria-hidden="true"></i> Help & Support</a>
+                            </li>
                             {{/if}}
                     </ul>
                 </div>
