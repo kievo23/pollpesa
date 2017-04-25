@@ -184,6 +184,10 @@
 			width: 100%;
 		}
 
+		#header{
+			display: none;
+		}
+
 	}
 
 	@media screen and (max-width: 736px) {
@@ -689,6 +693,10 @@
 
 		.row > * {
 			padding: 40px 0 0 0px;
+		}
+		.designer {
+			min-height: 1200px;
+    		position: relative;
 		}
 
 		.row {
@@ -2106,7 +2114,7 @@
 /* Main */
 
 	#main {
-		margin-left: 0px;
+		margin-left: 240px;
 	}
 
 		#main > section {
@@ -2180,6 +2188,7 @@
 			#header {
 			    bottom: 0;
 			    overflow: auto;
+			    position: absolute;
 			}
 
 		/* Footer */
@@ -2285,6 +2294,9 @@
 	@media screen and (max-width: 960px) {
 
 		/* Basic */
+			#header{
+				display: none;
+			}
 
 			html, body {
 				overflow-x: hidden;
@@ -2472,6 +2484,10 @@
 	@media screen and (max-width: 736px) {
 
 		/* Basic */
+
+			#header{
+				display: none;
+			}
 
 			body, input, textarea, select {
 				font-size: 12pt;
