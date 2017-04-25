@@ -224,6 +224,6 @@ app.use(function(req, res, next) {
 
 
 //module.exports = app;
-app.listen(4000,function(){
-	console.log("listening on port 400");
+app.listen(8080,function(){
+	console.log("listening on port 8080");
 })
