@@ -129,7 +129,7 @@ router.post('/create',roles.admin, function(req, res, next) {
 		position: position,
 		probability: prob
 	}).then(function(){
-		res.redirect('/');
+		res.redirect('/candidate');
 	}).catch(function(err){
 		res.render('candidate/index', { 
 			title: 'Error',
