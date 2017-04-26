@@ -30,12 +30,26 @@ router.get('/', function(req, res, next) {
 	    ]
 	});
 
-	Promise.all([candidates, presidents]).then(values => {
+	var counties = Region.findAll({
+		where: {
+			categoryId : 1
+		}
+	});
+
+	var constituencies = Region.findAll({
+		where: {
+			categoryId : 2
+		}
+	});
+
+	Promise.all([candidates, presidents,counties]).then(values => {
 		res.render('candidate/index', { 
 		  	title: 'Candidates',
 		  	id: 'candidate',
 		  	candidates: values[0],
-		  	presidents: values[1]
+		  	presidents: values[1],
+		  	counties: values[2],
+		  	constituencies: values[3]
 		});
 	});
 });

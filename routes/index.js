@@ -84,8 +84,18 @@ router.get('/', function(req, res, next) {
 	group by candidateid, c.name, c.odd,c.position limit 5',
 	      { type: connection.QueryTypes.SELECT }
     );
-  Promise.all([yesterday,lastSevenDays, lastweek, overall, candidates, presidents]).then(values => {
-  		console.log(values[0]);
+  var counties = Region.findAll({
+		where: {
+			categoryId : 1
+		}
+	});
+  var constituencies = Region.findAll({
+		where: {
+			categoryId : 2
+		}
+	});
+  Promise.all([yesterday,lastSevenDays, lastweek, overall, candidates, presidents, counties, constituencies]).then(values => {
+  		console.log(values[6]);
 	  res.render('index', { 
 	  	title: 'Kenyan Elections Virtual Bets',
 	  	id:"top",
@@ -94,7 +104,9 @@ router.get('/', function(req, res, next) {
 	  	lastweek: values[2],
 	  	overall: values[3],
 	  	candidates: values[4],
-	  	presidents: values[5]
+	  	presidents: values[5],
+	  	counties: values[6],
+	  	constituencies: values[7]
 	  });
   });
 });

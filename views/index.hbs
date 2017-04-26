@@ -200,12 +200,14 @@
         <div class="col-md-7 col-sm-12 sm-padding">
           <div class="panel panel-body">
           <p class="text-center">County
-
-          
-                                <select name="county" class="form-control">
-                                    <option>--Select County--</option>
-                                    <option value="1">Nairobi</option>
-                                </select>
+            <select name="county" class="form-control">
+                <option>--Select County--</option>
+                {{#if counties}}
+                  {{#each counties}}
+                    <option>--Select County--</option>
+                  {{/each}}
+                {{/if}}
+            </select>
           </p>
             <table class="table table-hover table-condensed table-responsive candidates">
               <thead>

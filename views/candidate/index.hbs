@@ -71,6 +71,14 @@
 				</div>
 			  <div class="col-md-6 col-sm-12">
 			  	<p class="text-center">County</p>
+			  	<select name="county" class="form-control">
+                <option>--Select County--</option>
+                {{#if counties}}
+                  {{#each counties}}
+                    <option>--Select County--</option>
+                  {{/each}}
+                {{/if}}
+            </select>
 				<table class="table table-hover table-condensed table-responsive candidates">
 					<thead>
 					<tr>
