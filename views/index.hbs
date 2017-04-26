@@ -252,7 +252,7 @@
                 <option>--Select Constituency--</option>
                 {{#if counties}}
                   {{#each counties}}
-                    <option>--Select Constituency--</option>
+                    <option value="{{dataValues.id}}">{{dataValues.name}}</option>
                   {{/each}}
                 {{/if}}
             </select>
