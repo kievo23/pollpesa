@@ -26,8 +26,7 @@ router.get('/create',roles.admin, function(req, res, next) {
 	Category.findAll().then(function(categories){
 		res.render('region/create', { 
 			title: 'Create Category',
-			categories: categories,
-			region: region
+			categories: categories
 		});
   	});
   
