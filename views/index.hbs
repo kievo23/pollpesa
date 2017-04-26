@@ -204,7 +204,7 @@
                 <option>--Select County--</option>
                 {{#if counties}}
                   {{#each counties}}
-                    <option>--Select County--</option>
+                    <option value="{{dataValues.id}}">{{dataValues.name}}</option>
                   {{/each}}
                 {{/if}}
             </select>
@@ -250,8 +250,8 @@
           <p class="text-center">Constituency
             <select name="county" class="form-control">
                 <option>--Select Constituency--</option>
-                {{#if counties}}
-                  {{#each counties}}
+                {{#if constituencies}}
+                  {{#each constituencies}}
                     <option value="{{dataValues.id}}">{{dataValues.name}}</option>
                   {{/each}}
                 {{/if}}
