@@ -86,7 +86,7 @@ router.post('/create',roles.admin, function(req, res, next) {
 		name: name,
 		categoryId:category
 	}).then(function(){
-		res.redirect("/");
+		res.redirect("/region");
 	}).catch(function(err){
 		res.render('region/index', { 
 			title: 'Error',
