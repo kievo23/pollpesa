@@ -6,6 +6,18 @@ var Candidate = require(__dirname + '/../models/Candidate');
 var Region = require(__dirname + '/../models/Region');
 
 /* GET home page. */
+
+router.get('/winners', function(req, res, next){
+	console.log("WINNERS!");
+	connection.query('select id,full_names, max(credits) as credits from users where credits is not null group by full_names,credits,id order by credits desc limit 10',
+	    { type: connection.QueryTypes.SELECT }).then(function(winners){
+	    	console.log(winners);
+	      	res.render('site/winners', { 
+			  	title: 'Overall Top 10 Winners',
+			  	winners: winners
+			  });
+	    });
+});
 router.get('/', function(req, res, next) {
   var today = moment();
   var yesterday = moment().subtract(1, 'days');

@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-image waves-effect waves-block waves-light">
+    <i class="fa fa-hand-trophy fa-3x" aria-hidden="true"></i>
+  </div>
+  <div class="card-reveal">
+    <span class="card-title grey-text text-darken-4">Overall Winners
+    </span>
+      {{#if winners}}
+      <table class="table table-hover table-condensed table-responsive">
+        <thead>
+        <tr>
+          <th>id</th>
+          <th>Names</th>
+          <th>Credits</th>
+          </tr>
+        </thead>
+        <tbody>
+      {{#each winners}}
+        <tr>
+          <td>{{id}}</td>
+          <td>{{full_names}}</td>
+          <td>{{credits}}</td>
+        </tr>
+      {{/each}}
+      </table>
+      {{/if}}
+  </div>
+</div>
