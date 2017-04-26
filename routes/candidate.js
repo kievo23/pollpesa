@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 	var candidates = Candidate.findAll({ 
 	    where: {
 			position: {
-				$notLike: 'president'
+				$in: ['Senator','Women Rep','Governor']
 			}
 		},
 		include: [
@@ -42,14 +42,24 @@ router.get('/', function(req, res, next) {
 		}
 	});
 
-	Promise.all([candidates, presidents,counties]).then(values => {
+	var mps = Candidate.findAll({ 
+	    where: {
+			position: 'MP'
+		},
+		include: [
+	        { model: Region, as: 'region'}
+	    ]
+	});
+
+	Promise.all([candidates, presidents,counties,constituencies,mps]).then(values => {
 		res.render('candidate/index', { 
 		  	title: 'Candidates',
 		  	id: 'candidate',
 		  	candidates: values[0],
 		  	presidents: values[1],
 		  	counties: values[2],
-		  	constituencies: values[3]
+		  	constituencies: values[3],
+		  	mps: values[4]
 		});
 	});
 });

@@ -40,7 +40,7 @@ router.get('/', function(req, res, next) {
   var candidates = Candidate.findAll({ 
 	    where: {
 			position: {
-				$notLike: 'president'
+				$in: ['Senator','Women Rep','Governor']
 			}
 		},
 		include: [
@@ -53,6 +53,15 @@ router.get('/', function(req, res, next) {
 			position: 'president'
 		},
 	    include: [
+	        { model: Region, as: 'region'}
+	    ]
+	});
+
+	var mps = Candidate.findAll({ 
+	    where: {
+			position: 'MP'
+		},
+		include: [
 	        { model: Region, as: 'region'}
 	    ]
 	});
@@ -94,11 +103,11 @@ router.get('/', function(req, res, next) {
 			categoryId : 2
 		}
 	});
-  Promise.all([yesterday,lastSevenDays, lastweek, overall, candidates, presidents, counties, constituencies]).then(values => {
+  Promise.all([yesterday,lastSevenDays, lastweek, overall, candidates, presidents, counties, constituencies, mps]).then(values => {
   		console.log(values[6]);
 	  res.render('index', { 
 	  	title: 'Kenyan Elections Virtual Bets',
-	  	id:"top",
+	  	id: "top",
 	  	yesterdays: values[0],
 	  	lastSevenDays: values[1],
 	  	lastweek: values[2],
@@ -106,7 +115,8 @@ router.get('/', function(req, res, next) {
 	  	candidates: values[4],
 	  	presidents: values[5],
 	  	counties: values[6],
-	  	constituencies: values[7]
+	  	constituencies: values[7],
+	  	mps: values[8]
 	  });
   });
 });
