@@ -11,7 +11,7 @@ var connection = require(__dirname + '/../config/db');
 var roles = require(__dirname + '/../config/roles');
 
 /* GET home page. */
-router.get('/',function(req,res,next){
+router.get('/',roles.auth,function(req,res,next){
      Bet.findAll({
      	where:{
      		userId: req.user.id
@@ -47,6 +47,7 @@ router.post('/place',roles.auth,function(req,res,next){
 	totalWinnings = 0;
 	candidates = {};
 	res.locals.cid = null;
+	//console.log("Amount:"+ );
 	Candidate.findAll({
 		where: {'id': {in: userids}},
 	})
@@ -55,13 +56,14 @@ router.post('/place',roles.auth,function(req,res,next){
         candidates.forEach(function(entry) {
 		    amount += parseFloat(entry.odd);
 		});
-        this.totalWinnings = parseInt(amount * price);
+        totalWinnings = amount * parseInt(price);
         this.candidates = candidates;
+        console.log(totalWinnings);
 
         User.findById(req.user.id).then(function(usr){
-        	if(usr.credits > price){
+        	if(usr.credits > parseInt(price)){
         		Bet.create({
-		           amount: this.totalWinnings,
+		           amount: '' +totalWinnings,
 		           userId : req.user.id,
 		           winstatus: 0,
 		           status: 0,
