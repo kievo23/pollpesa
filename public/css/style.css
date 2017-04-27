@@ -146,6 +146,9 @@ color: #f8f8f8;
 text-align: center;
 font-weight: bold;
 }
+table.dataTable tbody td tr{
+    padding: 8px 2px;
+}
 .no_margin{
 margin:0px !important;
 }
