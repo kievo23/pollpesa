@@ -60,7 +60,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                             {{#if user}}
-                            <li><a href="#"><strong>Credits: <span id="credits" v-if="creds">{{user.credits}}</span></strong></a></li>
+                            <li><a href="#"><strong>Credits: <span id="credits">{{user.credits}}</span></strong></a></li>
                             <li><a href="/logout">Logout</a></li>
                             {{else}}
                             <li>
@@ -98,16 +98,7 @@
                                         <div class="badge">\{{candidates.length}}</div>
                                 </a>
                             </li>
-                            <li>
-                                <a href="http://fb.me/PollPesa/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            </li>
                             
-                            <li>
-                                <a href="http://twitter.com/PollPesaKenya"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            </li>
-                            <li>
-                                <a href="http://www.instagram.com/pollpesa"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                            </li>
                         </ul>
 
                     </div>
@@ -135,11 +126,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                            {{#if user}}
-                            <li><a href="#"><strong>Credits: <span id="credits" v-if="creds">{{user.credits}}</span></strong></a></li>
-                            <li><a href="/logout">Logout</a></li>
-                            {{else}}
-                            <li>
+                             <li>
                                 <a href="http://fb.me/PollPesa/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                             </li>
                             <li>
@@ -151,7 +138,12 @@
                             <li>
                                 <a href="http://m.me/PollPesa"><i class="fa fa-phone" aria-hidden="true"></i> Help & Support</a>
                             </li>
+                            {{#if user}}
+                            <li><a href="#"><strong>Credits: <span id="credits" v-if="creds">{{user.credits}}</span></strong></a></li>
+                            <li><a href="/logout">Logout</a></li>
+                            
                             {{/if}}
+
                     </ul>
                 </div>
         </nav>
@@ -279,10 +271,7 @@
             <script src="/js/lodash.min.js"></script>
             <script src="/js/jquery.dataTables.min.js"></script>
             <script src="/js/skel.min.js"></script>
-            <script src="/js/util.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-            <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-            <script type="text/javascript">
+            <script src="/js/util.js"></script> <script type="text/javascript">
                 $(document).ready(function(){
                     $('.candidates').DataTable();
                     $('.bets').DataTable({
