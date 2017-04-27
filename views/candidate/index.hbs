@@ -165,9 +165,8 @@
 			</div>
 		
 	</div>
-   </div>
-   <div class="col-md-2 col-sm-12 nopadding" style="padding: 2px !important">
-   	<div class="panel">
+	<div class="col-md-2 col-sm-12 nopadding" style="padding: 2px !important">
+   		<div class="panel panel-body" v-if="candidates.length > 0">
 	        <hr><h3>Bet Slip</h3> <i class="fa fa-money fa-2x" aria-hidden="true"></i>
 	        <ul v-if="candidates">
 	        	<table class="table table-hover table-condensed table-responsive">
@@ -179,7 +178,6 @@
 	        	</tr>
 	        	</table>
 	        </ul>
-	        <div class="panel panel-danger">
 		        <div class="panel panel-heading">
 		        <form method="post" action="/bet/place" class="form-inline">
 		        	<div class="form-group">
@@ -189,19 +187,22 @@
 			            <input type="text" name="price" id="price" v-model="price" placeholder="Amount to Bet"> 
 			            <input type="hidden" name="cids" id="cids" v-model="cid">
 		           	</div>
-		           	<div class="form-group alert alert-warning">
+		           	<div class="form-group alert alert-success">
 	                  Anticipated Amount: \{{totalAmount}}
 		           </div>
 		           	<div class="form-group" v-if="price >= 100">	           		
 	                  <button type="submit" class="btn btn-primary">Place Bet</button>
 	                </div>
-		           	</form>
-		           
-		           </div>
+		        </form>		           
 		        </div>
-	        </div>
-		</div>
+	    </div>
+	    <div class="panel panel-body" v-if="candidates.length == 0">
+	      <hr><h3>Bet Slip</h3> <i class="fa fa-money fa-2x" aria-hidden="true"></i>
+	      <p>Empty</p>
+	    </div>
    </div>
+   </div>
+
    <modal v-if="showModal" @close="showModal = false">
 	    
 	    <h3 slot="header">Bet Details \{{betId}}</h3>
