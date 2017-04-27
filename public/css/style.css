@@ -28,6 +28,7 @@ ul li a strong, b {
 
 #ck-button label {
     float:left;
+    color: crimson;
     width:4.0em;
 }
 
@@ -134,13 +135,16 @@ font-size: 13px;
 }
 
 th {
-background: #DFDFDF; /* Darken header a bit */
+background: #CFB681; /* Darken header a bit */
 font-weight: bold;
+color: #f8f8f8;
 }
 
 td {
 background: #FAFAFA;
+color: #f8f8f8;
 text-align: center;
+font-weight: bold;
 }
 .no_margin{
 margin:0px !important;
@@ -164,11 +168,19 @@ padding:0px !important;
   padding-left: 4px;
   padding-right: 4px;
 }
+.panel {
+    color: bisque;
+    background-color: #42698e;
+}
+.panel h3{
+  color: bisque;
+  font-weight: bolder;
+}
 
 /* Cells in even rows (2,4,6...) are one color */
-tr:nth-child(even) td { background: #dadada; }
+tr:nth-child(even) td { background: #284560; }
 
 /* Cells in odd rows (1,3,5...) are another (excludes header cells) */
-tr:nth-child(odd) td { background: #FEFEFE; }
+tr:nth-child(odd) td { background: #2b385d; }
 
 tr td:hover { background: #afb9c5; color: #666; } /* Hover cell effect! */
