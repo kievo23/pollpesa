@@ -125,6 +125,11 @@
                         <li>
                                 <a href="winners"><i class="fa fa-trophy" aria-hidden="true"></i> Winners</a>
                         </li>
+                        <li v-if="candidates.length > 0">
+                                <a href="#betslip"><i class="fa fa-bitcoin" aria-hidden="true"></i>Bet Slip
+                                        <div class="badge">\{{candidates.length}}</div>
+                                </a>
+                            </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
