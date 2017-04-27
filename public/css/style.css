@@ -158,6 +158,15 @@ padding:0px !important;
 .secondtopper{
       font-size: 15px;
 }
+.secondtopper .navbar-toggle{
+  float: left;
+  width: 100%;
+}
+.secondtopper .nav>li{
+    float: left;
+    position: relative;
+    display: block;
+}
 .panel-body {
     padding: 5px !important;
 }
@@ -546,11 +555,16 @@ table.dataTable td {
     float: none;
     text-align: center; }
   .dataTables_wrapper .dataTables_paginate {
-    margin-top: 0.5em; } }
+    margin-top: 0.5em; } 
+  }
 @media screen and (max-width: 640px) {
   .dataTables_wrapper .dataTables_length,
   .dataTables_wrapper .dataTables_filter {
     float: none;
     text-align: center; }
   .dataTables_wrapper .dataTables_filter {
-    margin-top: 0.5em; } }
+    margin-top: 0.5em; }
+  .statistics{
+    display: none;
+    } 
+  }

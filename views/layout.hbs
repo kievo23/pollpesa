@@ -31,7 +31,7 @@
 </script>
     <body>
 
-        <!-- Header -->
+        <div id="mother">
         <div class="topper">
             <nav class="navbar navbar-default navbar-static-top no_margin" style="padding-left: 10px;padding-right: 10px;">
                 <div class="navbar-header">
@@ -84,12 +84,36 @@
             </nav>
         </div>
         <div class="topper secondtopper">
-            <nav class="navbar navbar-default navbar-static-top no_margin" style="
-      padding-left: 10px;
-      padding-right: 10px;background-color: #CFB681;">
-                
+            <nav class="navbar navbar-default navbar-static-top no_margin" style="padding-left: 10px;padding-right: 10px;background-color: #CFB681;">
+                <div class="navbar-toggle collapsed">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                    <a href="#"><i class="fa fa-globe" aria-hidden="true"></i> News</a>
+                            </li>
+                            <li>
+                                    <a href="winners"><i class="fa fa-trophy" aria-hidden="true"></i> Winners</a>
+                            </li>
+                            <li v-if="candidates.length > 0">
+                                <a href="#betslip"><i class="fa fa-bitcoin" aria-hidden="true"></i>Bet Slip
+                                        <div class="badge">\{{candidates.length}}</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://fb.me/PollPesa/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            </li>
+                            
+                            <li>
+                                <a href="http://twitter.com/PollPesaKenya"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="http://www.instagram.com/pollpesa"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                            </li>
+                        </ul>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    </div>
+
+                <div class="collapse navbar-collapse" id="app-navbar2-collapse">
+
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li>
@@ -239,6 +263,7 @@
                     </ul>
 
             </div>
+        </div>    
             <!-- Scripts -->
             <script src="/js/vue.js"></script>
             <script src="/js/jquery-1.12.4.min.js"></script>
@@ -312,8 +337,9 @@
 
                   return array;
                 }
+                
                 var app = new Vue({
-                    el: '#detail',
+                    el: '#mother',
                     data: {
                         cid: [],
                         msg: 'Welcome',
@@ -414,7 +440,7 @@
                               });
                         }
                     }
-                })
-            </script>
+                });
+        </script>
     </body>
 </html>
