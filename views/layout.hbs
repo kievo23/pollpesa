@@ -10,7 +10,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
+        <meta name="description" content="Play and support your favourite candidate in Kenya today. more then 1000 different bets including multibets. See if your favourite president is winning. Your Vote counts.">
         <meta name="author" content="Kelvin Chege M: AKA kickAss">
         <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
         <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -268,9 +268,12 @@
             <script src="/js/skel.min.js"></script>
             <script src="/js/util.js"></script> <script type="text/javascript">
                 $(document).ready(function(){
-                    $('.candidates').DataTable();
+                    $('.candidates').DataTable({
+                        responsive: true
+                    });
                     $('.bets').DataTable({
-                        "order": [[ 3, "desc" ]]
+                        "order": [[ 3, "desc" ]],
+                        responsive: true
                     } );
                 });
             </script>   
