@@ -1,6 +1,11 @@
 body {
   font: 14px ;
 }
+.topheader{
+  background: #222629 url(images/money.png) ;
+  background-repeat:repeat-x ;
+  height: 150px
+}
 .topper nav{
       background: #222629 url(images/overlay.png);
       padding-top: 10px;
