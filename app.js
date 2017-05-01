@@ -20,6 +20,8 @@ var region = require('./routes/region');
 var candidate = require('./routes/candidate');
 var bets = require('./routes/bets');
 var betdetails = require('./routes/betdetails');
+var news = require('./routes/news');
+var polls = require('./routes/polls');
 var webpack = require("webpack");
 var back = require('express-back');  
 var moment = require('moment');
@@ -134,6 +136,8 @@ app.use('/region', region);
 app.use('/candidate', candidate);
 app.use('/bet', bets);
 app.use('/betdetails', betdetails);
+app.use('/news', news);
+app.use('/poll', polls);
 
 // error handler
 app.use(function(err, req, res, next) {

@@ -10,8 +10,15 @@ var User = require(__dirname + '/../models/userModel');
 var Candidate = require(__dirname + '/../models/Candidate');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/',roles.admin, function(req, res, next) {
+  User.findAll()
+	.then(function(users){
+		console.log(users);
+  		res.render('users/index', { 
+		  	title: 'Users',
+		  	users: users
+		});
+  	});
 });
 
 router.get('/test', function(req, res, done){
