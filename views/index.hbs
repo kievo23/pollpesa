@@ -1,127 +1,151 @@
 <div id="mainnotlogged">
-                        <div class="row text-center">True Distinct Polls
-                        </div>
                         <div class="row statistics">
-                            <div class="col-md-3 col-sm-6 col-xs-10">
-                                <div class="panel panel-body">
-                                    <div class="card-image waves-effect waves-block waves-light">
-                                      <i class="fa fa-hand-scissors-o fa-3x" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="card-reveal">
-                                      <span class="card-title grey-text text-darken-4">Last 24 Hours
-                                      </span>
-                                        {{#if yesterdays}}
-                                        <table class="table table-hover table-condensed table-responsive">
-                                          <thead>
-                                          <tr>
-                                            <th>Votes</th>
-                                            <th>Name</th>
-                                            <th>Odd</th>
-                                            </tr>
-                                          </thead>
-                                          <tbody>
-                                        {{#each yesterdays}}
-                                          <tr>
-                                            <td>{{count}}</td>
-                                            <td>{{name}}</td>
-                                            <td>{{odd}}</td>
-                                          </tr>
-                                        {{/each}}
-                                        </table>
-                                        {{/if}}
-                                    </div>
+                          <div>
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                              <li role="presentation" class="active"><a href="#results" aria-controls="results" role="tab" data-toggle="tab">Results</a></li>
+                              <li role="presentation"><a href="#polls" aria-controls="polls" role="tab" data-toggle="tab">Polls</a></li>
+                              <li role="presentation"><a href="#news" aria-controls="news" role="tab" data-toggle="tab">News</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                              <div role="tabpanel" class="tab-pane active" id="results">
+
+
+                                  <div class="col-md-3 col-sm-6 col-xs-10">
+                                      <div class="panel panel-body">
+                                          <div class="card-image waves-effect waves-block waves-light">
+                                            <i class="fa fa-hand-scissors-o fa-3x" aria-hidden="true"></i>
+                                          </div>
+                                          <div class="card-reveal">
+                                            <span class="card-title grey-text text-darken-4">Last 24 Hours
+                                            </span>
+                                              {{#if yesterdays}}
+                                              <table class="table table-hover table-condensed table-responsive">
+                                                <thead>
+                                                <tr>
+                                                  <th>Votes</th>
+                                                  <th>Name</th>
+                                                  <th>Odd</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                              {{#each yesterdays}}
+                                                <tr>
+                                                  <td>{{count}}</td>
+                                                  <td>{{name}}</td>
+                                                  <td>{{odd}}</td>
+                                                </tr>
+                                              {{/each}}
+                                              </table>
+                                              {{/if}}
+                                          </div>
+                                        </div>
                                   </div>
+                                  <div class="col-md-3 col-sm-6 col-xs-10">
+                                     <div class="panel panel-body">
+                                        <div class="card-image waves-effect waves-block waves-light">
+                                          <i class="fa fa-certificate fa-3x" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="card-reveal">
+                                          <span class="card-title grey-text text-darken-4">Last Seven days
+                                          </span>
+                                          {{#if lastSevenDays}}
+                                            <table class="table table-hover table-condensed table-responsive">
+                                              <thead>
+                                              <tr>
+                                                <th>Votes</th>
+                                                <th>Name</th>
+                                                <th>Odd</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                            {{#each lastSevenDays}}
+                                              <tr>
+                                                <td>{{count}}</td>
+                                                <td>{{name}}</td>
+                                                <td>{{odd}}</td>
+                                              </tr>
+                                            {{/each}}
+                                            </table>
+                                            {{/if}}
+                                        </div>
+                                      </div>
+                                </div>
+                                <div class="col-md-3  col-sm-6 col-xs-10">
+                                    <div class="panel panel-body">
+                                        <div class="card-image waves-effect waves-block waves-light">
+                                          <i class="fa fa-bar-chart-o fa-3x" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="card-reveal">
+                                          <span class="card-title grey-text text-darken-4">Last Week
+                                          </span>
+                                            {{#if lastweek}}
+                                            <table class="table table-hover table-condensed table-responsive">
+                                              <thead>
+                                              <tr>
+                                                <th>Votes</th>
+                                                <th>Name</th>
+                                                <th>Odd</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                            {{#each lastweek}}
+                                              <tr>
+                                                <td>{{count}}</td>
+                                                <td>{{name}}</td>
+                                                <td>{{odd}}</td>
+                                              </tr>
+                                            {{/each}}
+                                            </table>
+                                            {{/if}}
+                                        </div>
+                                      </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6 col-xs-10">
+                                    <div class="panel panel-body">
+                                        <div class="card-image waves-effect waves-block waves-light">
+                                          <i class="fa fa-database fa-3x" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="card-reveal">
+                                          <span class="card-title grey-text text-darken-4">Overall
+                                          </span>
+                                            {{#if overall}}
+                                            <table class="table table-hover table-condensed table-responsive">
+                                              <thead>
+                                              <tr>
+                                                <th>Votes</th>
+                                                <th>Name</th>
+                                                <th>Odd</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                            {{#each overall}}
+                                              <tr>
+                                                <td>{{count}}</td>
+                                                <td>{{name}}</td>
+                                                <td>{{odd}}</td>
+                                              </tr>
+                                            {{/each}}
+                                            </table>
+                                            {{/if}}
+                                        </div>
+                                      </div>
+                                </div>
+
+
+                              </div>
+                              <div role="tabpanel" class="tab-pane" id="polls">...</div>
+                              <div role="tabpanel" class="tab-pane" id="news">...</div>
+                              <div role="tabpanel" class="tab-pane" id="settings">...</div>
                             </div>
-                            <div class="col-md-3 col-sm-6 col-xs-10">
-                                 <div class="panel panel-body">
-                                    <div class="card-image waves-effect waves-block waves-light">
-                                      <i class="fa fa-certificate fa-3x" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="card-reveal">
-                                      <span class="card-title grey-text text-darken-4">Last Seven days
-                                      </span>
-                                      {{#if lastSevenDays}}
-                                        <table class="table table-hover table-condensed table-responsive">
-                                          <thead>
-                                          <tr>
-                                            <th>Votes</th>
-                                            <th>Name</th>
-                                            <th>Odd</th>
-                                            </tr>
-                                          </thead>
-                                          <tbody>
-                                        {{#each lastSevenDays}}
-                                          <tr>
-                                            <td>{{count}}</td>
-                                            <td>{{name}}</td>
-                                            <td>{{odd}}</td>
-                                          </tr>
-                                        {{/each}}
-                                        </table>
-                                        {{/if}}
-                                    </div>
-                                  </div>
-                            </div>
-                            <div class="col-md-3  col-sm-6 col-xs-10">
-                                <div class="panel panel-body">
-                                    <div class="card-image waves-effect waves-block waves-light">
-                                      <i class="fa fa-bar-chart-o fa-3x" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="card-reveal">
-                                      <span class="card-title grey-text text-darken-4">Last Week
-                                      </span>
-                                        {{#if lastweek}}
-                                        <table class="table table-hover table-condensed table-responsive">
-                                          <thead>
-                                          <tr>
-                                            <th>Votes</th>
-                                            <th>Name</th>
-                                            <th>Odd</th>
-                                            </tr>
-                                          </thead>
-                                          <tbody>
-                                        {{#each lastweek}}
-                                          <tr>
-                                            <td>{{count}}</td>
-                                            <td>{{name}}</td>
-                                            <td>{{odd}}</td>
-                                          </tr>
-                                        {{/each}}
-                                        </table>
-                                        {{/if}}
-                                    </div>
-                                  </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-10">
-                                <div class="panel panel-body">
-                                    <div class="card-image waves-effect waves-block waves-light">
-                                      <i class="fa fa-database fa-3x" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="card-reveal">
-                                      <span class="card-title grey-text text-darken-4">Overall
-                                      </span>
-                                        {{#if overall}}
-                                        <table class="table table-hover table-condensed table-responsive">
-                                          <thead>
-                                          <tr>
-                                            <th>Votes</th>
-                                            <th>Name</th>
-                                            <th>Odd</th>
-                                            </tr>
-                                          </thead>
-                                          <tbody>
-                                        {{#each overall}}
-                                          <tr>
-                                            <td>{{count}}</td>
-                                            <td>{{name}}</td>
-                                            <td>{{odd}}</td>
-                                          </tr>
-                                        {{/each}}
-                                        </table>
-                                        {{/if}}
-                                    </div>
-                                  </div>
-                            </div>
+
+                          </div>
+                            
+                            
+                            
+                            
                         </div>
             </div>
             <div class="rowd">

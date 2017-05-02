@@ -10,6 +10,7 @@ var User = require(__dirname + '/../models/userModel');
 var connection = require(__dirname + '/../config/db');
 var roles = require(__dirname + '/../config/roles');
 var Polls = require(__dirname + '/../models/Polls');
+var PollOption = require(__dirname + '/../models/PollOptions');
 
 router.get('/',roles.auth,function(req,res,next){
     Polls.findAll()
@@ -66,6 +67,8 @@ router.post('/update/:id',roles.admin, function(req, res, next) {
 router.post('/create',roles.admin, function(req, res, next) {
 	var name = req.body.name;
 	var description = req.body.description;
+	var optionone = req.body.optionone;
+	var optiontwo = req.body.optiontwo;
 
 	req.checkBody('name','Should not be empty').notEmpty();
 	req.checkBody('description','Should not be empty').notEmpty();
@@ -73,8 +76,18 @@ router.post('/create',roles.admin, function(req, res, next) {
 	Polls.create({
 		name: name,
 		desc:description,
-	}).then(function(){
-		res.redirect('/poll');
+	}).then(function(poll){
+		var poll1 = PollOption.create({
+			pollid: poll.id,
+			name: optionone
+		});
+		var poll2 = PollOption.create({
+			pollid: poll.id,
+			name: optiontwo
+		});
+		Promise.all([poll1,poll2]).then(values => {
+			res.redirect('/poll');
+		});
 	}).catch(function(err){
 		res.render('polls/index', { 
 			title: 'Error',
