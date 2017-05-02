@@ -9,8 +9,8 @@ var Betdetails = require(__dirname + '/../models/Details');
 var User = require(__dirname + '/../models/userModel');
 var connection = require(__dirname + '/../config/db');
 var roles = require(__dirname + '/../config/roles');
-var Polls = require(__dirname + '/../models/Polls');
-var PollOption = require(__dirname + '/../models/PollOptions');
+var Polls = require(__dirname + '/../models/Poll');
+var PollOption = require(__dirname + '/../models/Polloption');
 
 router.get('/',roles.auth,function(req,res,next){
     Polls.findAll()
@@ -75,7 +75,7 @@ router.post('/create',roles.admin, function(req, res, next) {
 
 	Polls.create({
 		name: name,
-		desc:description,
+		desc: description,
 	}).then(function(poll){
 		var poll1 = PollOption.create({
 			pollid: poll.id,
@@ -86,7 +86,17 @@ router.post('/create',roles.admin, function(req, res, next) {
 			name: optiontwo
 		});
 		Promise.all([poll1,poll2]).then(values => {
-			res.redirect('/poll');
+			console.log(values[0]);
+			console.log(values[1]);
+			res.render('polls/index',{
+				polla: values[0],
+				pollb: values[1]
+			});
+		}).catch(function(err){
+			res.render('polls/index', { 
+				title: 'Error',
+				errors: err.errors[0].message,
+			});
 		});
 	}).catch(function(err){
 		res.render('polls/index', { 

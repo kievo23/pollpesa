@@ -1,5 +1,5 @@
 <div id="mainnotlogged">
-                        <div class="row statistics">
+                        <div class="statistics">
                           <div>
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs" role="tablist">
@@ -13,7 +13,7 @@
                               <div role="tabpanel" class="tab-pane active" id="results">
 
 
-                                  <div class="col-md-3 col-sm-6 col-xs-10">
+                                  <div class="col-md-2 col-sm-6 col-xs-10 no_padding">
                                       <div class="panel panel-body">
                                           <div class="card-image waves-effect waves-block waves-light">
                                             <i class="fa fa-hand-scissors-o fa-3x" aria-hidden="true"></i>
@@ -43,7 +43,7 @@
                                           </div>
                                         </div>
                                   </div>
-                                  <div class="col-md-3 col-sm-6 col-xs-10">
+                                  <div class="col-md-2 col-sm-6 col-xs-10 no_padding">
                                      <div class="panel panel-body">
                                         <div class="card-image waves-effect waves-block waves-light">
                                           <i class="fa fa-certificate fa-3x" aria-hidden="true"></i>
@@ -73,7 +73,7 @@
                                         </div>
                                       </div>
                                 </div>
-                                <div class="col-md-3  col-sm-6 col-xs-10">
+                                <div class="col-md-2  col-sm-6 col-xs-10 no_padding">
                                     <div class="panel panel-body">
                                         <div class="card-image waves-effect waves-block waves-light">
                                           <i class="fa fa-bar-chart-o fa-3x" aria-hidden="true"></i>
@@ -103,7 +103,7 @@
                                         </div>
                                       </div>
                                 </div>
-                                <div class="col-md-3 col-sm-6 col-xs-10">
+                                <div class="col-md-2 col-sm-6 col-xs-10 no_padding">
                                     <div class="panel panel-body">
                                         <div class="card-image waves-effect waves-block waves-light">
                                           <i class="fa fa-database fa-3x" aria-hidden="true"></i>
@@ -136,22 +136,29 @@
 
 
                               </div>
-                              <div role="tabpanel" class="tab-pane" id="polls">...</div>
-                              <div role="tabpanel" class="tab-pane" id="news" style="padding:5px; background-color: #f5f5f5">
-                                {{#if news}}
-                                {{#each news}}
-                                    {{dataValues.name}}<br>
+                              <div role="tabpanel" class="tab-pane" id="polls" style="padding:5px; background-color: #f5f5f5">
+                                {{#if polls}}
+                                {{#each polls}}
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                    {{dataValues.name}}
+                                    {{dataValues.option}}
+                                    </div>
                                 {{/each}}
                                 {{/if}}
                               </div>
-                              <div role="tabpanel" class="tab-pane" id="settings">...</div>
+                              <div role="tabpanel" class="tab-pane" id="news" style="padding:5px; background-color: #f5f5f5">
+                                {{#if news}}
+                                {{#each news}}
+                                  <div class="col-md-3 col-sm-6 col-xs-12">
+                                    {{dataValues.name}}
+                                    {{dataValues.poll}}
+                                  </div>
+                                {{/each}}
+                                {{/if}}
+                              </div>
                             </div>
 
                           </div>
-                            
-                            
-                            
-                            
                         </div>
             </div>
             <div class="rowd">
@@ -188,7 +195,7 @@
       </div>
       {{/if}}
     
-      <div class="row">
+      <div class="rowd">
         <div class="col-md-12 col-sm-12 sm-padding">
 
         <div class="panel">
@@ -359,11 +366,12 @@
                
                </div>
             </div>
+            <div class="panel panel-body betslip" v-if="candidates == 0"  id="betslip">
+              <hr><h3>Bet Slip</h3> <i class="fa fa-users fa-2x" aria-hidden="true"></i>
+              <p class="text-center">You Have Not Selected Any Bets</p>
+            </div>
     </div>
-    <div class="panel panel-body betslip" v-if="candidates == 0">
-      <hr><h3>Bet Slip</h3> <i class="fa fa-users fa-2x" aria-hidden="true"></i>
-      <p>You Have Not Selected Any Bets</p>
-    </div>
+    
    </div>
    <modal v-if="showModal" @close="showModal = false">
       

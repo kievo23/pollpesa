@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="/css/ie8.css" />
         <link rel="stylesheet" href="/css/ie9.css" />
         <link href="/css/jquery.dataTables.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="/css/prologue.css" />
+        <link rel="stylesheet" href="/css/font-awesome.min.css" />
         <link rel="stylesheet" href="/css/style.css" /> 
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
@@ -152,7 +152,7 @@
                 <div class="top" style="padding-left: 30px;">
 
                     <!-- Logo -->
-                        <div id="logo">
+                        <div id="logo" style="color:#b39e2c">
                             {{#if user}}
                             <h1 id="title">{{user.names}}</h1>
                             <p>Blue Belt</p>
@@ -177,7 +177,7 @@
                                    <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
 
                             -->
-                            <ul>
+                            <ul style="list-style-type: none;padding:0px">
                                 <li><a href="/" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>                                
                                 <li><a href="/candidate" id="candidate-link" class="skel-layers-ignoreHref"><span class="icon fa-users">Candidates</span></a></li>
                                 <li><a href="/counties" id="candidate-link" class="skel-layers-ignoreHref"><span class="icon fa-bug">Counties</span></a></li>
@@ -208,7 +208,7 @@
                 <div class="bottom">
 
                     <!-- Social Icons -->
-                        <ul class="icons">
+                        <ul class="icons" style="list-style-type: none;">
                             <li><a href="http://twitter.com/PollPesaKenya" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
                             <li><a href="http://fb.me/PollPesa/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
                             <li><a href="http://m.me/PollPesa/" class="icon fa-call"><span class="label">Facebook Messenger</span></a></li>
@@ -240,7 +240,7 @@
                             {{#if error}}     
                                     <div class="alert alert-danger">{{error}}</div>
                             {{/if}}
-                            <div id="detail" style="margin-top: 50px;">
+                            <div id="detail" style="margin-top: 10px;">
                                 {{{body}}}  
                                 <br>
                                 
