@@ -69,11 +69,12 @@ ul.default {
       padding-left: 0.25em;
     }
     .top nav ul li a:hover {
-    color: #337ab7;
+    color: #f5f5f5 !important;
     text-decoration: none;
     background: #b39e2c;
     display: block;
     padding: 5px;
+    border-radius: 2px
   }
    .top nav ul li a {
     text-decoration: none;
