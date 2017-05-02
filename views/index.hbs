@@ -137,7 +137,13 @@
 
                               </div>
                               <div role="tabpanel" class="tab-pane" id="polls">...</div>
-                              <div role="tabpanel" class="tab-pane" id="news">...</div>
+                              <div role="tabpanel" class="tab-pane" id="news" style="padding:5px; background-color: #f5f5f5">
+                                {{#if news}}
+                                {{#each news}}
+                                    {{dataValues.name}}<br>
+                                {{/each}}
+                                {{/if}}
+                              </div>
                               <div role="tabpanel" class="tab-pane" id="settings">...</div>
                             </div>
 
@@ -322,7 +328,7 @@
   </div>
    </div>
    <div class="col-md-2  col-sm-12 col-xs-10 no_padding no_margin" >
-    <div class="panel panel-body" v-if="candidates.length > 0" id="betslip">
+    <div class="panel panel-body  betslip" v-if="candidates.length > 0" id="betslip">
           <hr><h3>Bet Slip</h3> <i class="fa fa-money fa-2x" aria-hidden="true"></i>
           <ul v-if="candidates">
             <table class="table table-hover table-condensed table-responsive">
@@ -334,7 +340,7 @@
             </tr>
             </table>
           </ul>
-            <div class="panel panel-heading">
+            <div class="panel-footer">
             <form method="post" action="/bet/place" class="form-inline">
               <div class="form-group">
                   Amount to Bet 
@@ -354,7 +360,7 @@
                </div>
             </div>
     </div>
-    <div class="panel panel-body" v-if="candidates == 0">
+    <div class="panel panel-body betslip" v-if="candidates == 0">
       <hr><h3>Bet Slip</h3> <i class="fa fa-users fa-2x" aria-hidden="true"></i>
       <p>You Have Not Selected Any Bets</p>
     </div>

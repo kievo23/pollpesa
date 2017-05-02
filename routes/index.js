@@ -4,7 +4,7 @@ var connection = require(__dirname + '/../config/db');
 var moment = require('moment');
 var Candidate = require(__dirname + '/../models/Candidate');
 var Region = require(__dirname + '/../models/Region');
-
+var News = require(__dirname + '/../models/News');
 /* GET home page. */
 
 router.get('/winners', function(req, res, next){
@@ -103,8 +103,11 @@ router.get('/', function(req, res, next) {
 			categoryId : 2
 		}
 	});
-  Promise.all([yesterday,lastSevenDays, lastweek, overall, candidates, presidents, counties, constituencies, mps]).then(values => {
-  		console.log(values[6]);
+  var news = News.findAll({
+  	order: [['createdAt', 'DESC']],
+  	limit: 5
+  });
+  Promise.all([yesterday,lastSevenDays, lastweek, overall, candidates, presidents, counties, constituencies, mps,news]).then(values => {
 	  res.render('index', { 
 	  	title: 'Kenyan Elections Virtual Bets',
 	  	id: "top",
@@ -116,7 +119,8 @@ router.get('/', function(req, res, next) {
 	  	presidents: values[5],
 	  	counties: values[6],
 	  	constituencies: values[7],
-	  	mps: values[8]
+	  	mps: values[8],
+	  	news: values[9]
 	  });
   });
 });
