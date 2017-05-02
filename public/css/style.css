@@ -6,6 +6,9 @@ body {
   font: 14px ;
   font-family: pollpesa
 }
+#main > section{
+      text-align: center;
+}
 .topheader{
   background: #222629 url(images/money.png) ;
   background-repeat:repeat-x ;
