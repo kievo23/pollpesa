@@ -2,12 +2,12 @@
 <form class="form-horizontal" method="post" action="create">
   <div class="form-group">
     <div class="col-sm-10">
-      <input type="text" id="name" name="name" placeholder="Name">
+      <input type="text" id="name" name="name" placeholder="Name" class="form-control">
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-10">
-      <select name="region" id="region">
+      <select name="region" id="region" class="form-control">
         <option value="">--SELECT--</option>
         {{#if regions}}
           {{#each regions}}
@@ -19,7 +19,7 @@
   </div>
   <div class="form-group">
     <div class="col-sm-10">
-      <select name="position" id="position">
+      <select name="position" id="position" class="form-control">
         <option value="">--SELECT--</option>
         <option value="president">President</option>
         <option value="Governor">Governor</option>
@@ -32,17 +32,17 @@
   </div>
   <div class="form-group">
     <div class="col-sm-10">
-      <input type="text" id="odd" name="odd" placeholder="Odd">
+      <input type="text" id="odd" name="odd" placeholder="Odd" class="form-control">
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-10">
-      <input type="text" id="probability" name="probability" placeholder="0 to 100">
+      <input type="text" id="probability" name="probability" placeholder="0 to 100" class="form-control">
     </div>
   </div>
   <div class="form-group">
     <div class="">
-      <button type="submit" class="button scrolly">Create</button>
+      <button type="submit" class="button btn btn-warning">Create</button>
     </div>
   </div>
 </form>
