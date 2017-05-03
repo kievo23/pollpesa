@@ -205,6 +205,7 @@
           <tr>
             <th>Name</th>
             <th>Position</th>
+             <th>Region</th>
             <th>Odds</th>
             <th>Actions</th>
             <th>Edit</th>
@@ -215,7 +216,8 @@
             {{#each presidents}}
               <tr>
                 <td>{{dataValues.name}}</td>
-                <td>{{dataValues.position}}</td>
+                <td>{{dataValues.position}}</td>                
+                    <td>{{dataValues.region.name}}</td>
                 <td>{{dataValues.odd}}</td>
                 <td class="betbutton">
                    <div id="ck-button">
