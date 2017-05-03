@@ -113,9 +113,16 @@ router.get('/', function(req, res, next) {
   var polls = Polls.findAll({
   	order: [['createdAt', 'DESC']],
   	limit: 5
+  }).then(function(polls){
+  		polls.forEach(function(poll) {
+		    poll.options = PollOption.findAll({
+		    	where: { pollid: poll.id}
+		    })
+		});
+		return polls;
   });
   Promise.all([yesterday,lastSevenDays, lastweek, overall, candidates, presidents, counties, constituencies, mps, news, polls]).then(values => {
-	  
+	  console.log(values[10]);
 	  res.render('index', { 
 	  	title: 'Kenyan Elections Virtual Bets',
 	  	id: "top",
