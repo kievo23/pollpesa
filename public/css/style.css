@@ -670,4 +670,7 @@ table.dataTable td {
   #header{
     display: none;
   }
+  .topheader {
+    display: none;
+  }
 }
