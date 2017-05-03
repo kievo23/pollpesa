@@ -195,7 +195,7 @@
       </div>
       {{/if}}
     
-      <div class="row">
+      <div class="rowd">
         <div class="col-md-12 col-sm-12  col-xs-12 no_padding">
 
         <div class="panel">
@@ -206,7 +206,6 @@
             <th>Name</th>
             <th>Position</th>
              <th>Region</th>
-            <th>Odds</th>
             <th>Actions</th>
             <th>Edit</th>
             </tr>
@@ -218,11 +217,10 @@
                 <td>{{dataValues.name}}</td>
                 <td>{{dataValues.position}}</td>                
                     <td>{{dataValues.region.name}}</td>
-                <td>{{dataValues.odd}}</td>
                 <td class="betbutton">
                    <div id="ck-button">
                     <label>
-                        <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>Bet</span>
+                        <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>{{dataValues.odd}}</span>
                      </label>
                   </div>
                 </td>
@@ -256,8 +254,7 @@
                 <th>Name</th>
                 <th>Position</th>
                 <th>Region</th>
-                <th>Odds</th>
-                <th>Actions</th>
+                <th>Bet</th>
                 <th>Edit</th>
                 </tr>
               </thead>
@@ -268,11 +265,10 @@
                     <td>{{dataValues.name}}</td>
                     <td>{{dataValues.position}}</td>
                     <td>{{dataValues.region.name}}</td>
-                    <td>{{dataValues.odd}}</td>
                     <td class="betbutton">
                        <div id="ck-button">
                         <label>
-                            <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>Bet</span>
+                            <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>{{dataValues.odd}}</span>
                          </label>
                       </div>
                     </td>
@@ -304,8 +300,7 @@
                 <th>Name</th>
                 <th>Position</th>
                 <th>Region</th>
-                <th>Odds</th>
-                <th>Actions</th>
+                <th>Bet</th>
                 <th>Edit</th>
                 </tr>
               </thead>
@@ -316,11 +311,10 @@
                     <td>{{dataValues.name}}</td>
                     <td>{{dataValues.position}}</td>
                     <td>{{dataValues.region.name}}</td>
-                    <td>{{dataValues.odd}}</td>
                     <td class="betbutton">
                        <div id="ck-button">
                         <label>
-                            <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>Bet</span>
+                            <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>{{dataValues.odd}}</span>
                          </label>
                       </div>
                     </td>

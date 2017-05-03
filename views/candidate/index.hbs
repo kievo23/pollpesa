@@ -34,41 +34,46 @@
 		
 		<div class="panel panel-body">
 			<div class="rowd">
-				<div class="col-md-12 col-sm-12">
-			   <p class="text-center">Presidential</p>
-				<table class="table table-hover table-condensed table-responsive candidates">
-					<thead>
-					<tr>
-						<th>Name</th>
-						<th>Position</th>
-						<th>Odds</th>
-						<th>Actions</th>
-						<th>Edit</th>
-						</tr>
-					</thead>
-					<tbody>
-					{{#if presidents}}
-						{{#each presidents}}
-							<tr>
-								<td>{{dataValues.name}}</td>
-								<td>{{dataValues.position}}</td>
-								<td>{{dataValues.odd}}</td>
-								<td>
-								   <div id="ck-button">
-										<label>
-									      <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>Bet</span>
-									   </label>
-									</div>
-								</td>
-								<td>
-				          			<a href="candidate/update/{{dataValues.id}}">Edit</a>
-				          		</td>
-							</tr>
-						{{/each}}
-					{{/if}}
-					</tbody>
-				</table>
-				</div>
+        <div class="col-md-12 col-sm-12  col-xs-12 no_padding">
+
+        <div class="panel">
+         <p class="text-center">Presidential</p>
+        <table class="table table-hover table-condensed table-responsive candidates">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+             <th>Region</th>
+            <th>Actions</th>
+            <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+          {{#if presidents}}
+            {{#each presidents}}
+              <tr>
+                <td>{{dataValues.name}}</td>
+                <td>{{dataValues.position}}</td>                
+                    <td>{{dataValues.region.name}}</td>
+                <td class="betbutton">
+                   <div id="ck-button">
+                    <label>
+                        <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>{{dataValues.odd}}</span>
+                     </label>
+                  </div>
+                </td>
+                <td class="desktop">
+                        <a href="candidate/update/{{dataValues.id}}">Edit</a>
+                      </td>
+              </tr>
+            {{/each}}
+          {{/if}}
+          </tbody>
+        </table>
+        </div>
+      </div>
+      </div>
+      <div>
 			  <div class="col-md-6 col-sm-12">
 			  	<p class="text-center">County</p>
 			  	<select name="county" class="form-control">
@@ -85,8 +90,7 @@
 						<th>Name</th>
 						<th>Position</th>
 						<th>Region</th>
-						<th>Odds</th>
-						<th>Actions</th>
+						<th>Bet</th>
 						<th>Edit</th>
 						</tr>
 					</thead>
@@ -97,11 +101,10 @@
 								<td>{{dataValues.name}}</td>
 								<td>{{dataValues.position}}</td>
 								<td>{{dataValues.region.name}}</td>
-								<td>{{dataValues.odd}}</td>
 								<td>
 								   <div id="ck-button">
 										<label>
-									      <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>Bet</span>
+									      <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>{{dataValues.odd}}</span>
 									   </label>
 									</div>
 								</td>
@@ -132,8 +135,7 @@
 						<th>Name</th>
 						<th>Position</th>
 						<th>Region</th>
-						<th>Odds</th>
-						<th>Actions</th>
+						<th>Bet</th>
 						<th>Edit</th>
 						</tr>
 					</thead>
@@ -148,7 +150,7 @@
 								<td>
 								   <div id="ck-button">
 										<label>
-									      <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>Bet</span>
+									      <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>{{dataValues.odd}}</span>
 									   </label>
 									</div>
 								</td>
