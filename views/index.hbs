@@ -136,8 +136,9 @@
 
 
                               </div>
-                              <div role="tabpanel" class="tab-pane bright" id="polls" style="padding:20px; ">
+                              <div role="tabpanel" class="tab-pane" id="polls" style="padding:20px; ">
                                 {{#if polls}}
+                                <div class="panel panel-body">
                                 {{#each polls}}
                                     <div class="col-md-3 col-sm-6 col-xs-12 bright">
                                     <input id="poll[]" value="{{dataValues.id}}" type="hidden">
@@ -145,6 +146,7 @@
                                     {{{dataValues.description}}}
                                     </div>
                                 {{/each}}
+                                </div>
                                 {{/if}}
                               </div>
                               <div role="tabpanel" class="tab-pane" id="news" style="padding:20px;">
