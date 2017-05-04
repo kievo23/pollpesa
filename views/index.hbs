@@ -140,9 +140,9 @@
                                 {{#if polls}}
                                 {{#each polls}}
                                     <div class="col-md-3 col-sm-6 col-xs-12 bright">
-                                    {{dataValues.id}}
+                                    <input id="poll[]" value="{{dataValues.id}}" type="hidden">
                                     {{dataValues.name}}
-                                    {{dataValues.option}}
+                                    {{dataValues.description}}
                                     </div>
                                 {{/each}}
                                 {{/if}}
@@ -152,7 +152,7 @@
                                 <div class="panel panel-body">
                                 {{#each news}}
                                   <div class="col-md-3 col-sm-6 col-xs-12 newsbody">
-                                    {{dataValues.name}}
+                                    <strong>{{dataValues.name}}</strong>
                                     {{{dataValues.desc}}}
                                   </div>
                                 {{/each}}
