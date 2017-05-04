@@ -661,6 +661,9 @@ table.dataTable td {
     margin-top: 0.5em; } 
   }
 @media screen and (max-width: 640px) {
+  #betmobileslip{
+    display: block;
+  }
   .dataTables_wrapper .dataTables_length,
   .dataTables_wrapper .dataTables_filter {
     float: none;
