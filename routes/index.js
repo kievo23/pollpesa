@@ -33,9 +33,10 @@ router.get('/counties', function(req, res, next){
 		});
 	})
 });
+
 router.get('/', function(req, res, next) {
-  var today = moment();
-  var yesterday = moment().subtract(1, 'days');
+  var today = moment()
+  var yesterday = moment().subtract(1, 'days')
   var endOfLastSevenDays = moment().subtract(7,'days');
   var startOfLastWeek = moment().subtract(1,'weeks').startOf('isoweek');
   var endOfLastWeek = moment().subtract(1,'weeks').endOf('isoweek');
@@ -113,32 +114,25 @@ router.get('/', function(req, res, next) {
   var polls = Polls.findAll({
   	order: [['createdAt', 'DESC']],
   	limit: 5
-  }).then(function(polls){
-  		polls.forEach(function(poll) {
-		    poll.options = PollOption.findAll({
-		    	where: { pollid: poll.id}
-		    })
-		});
-		return polls;
-  });
+  })
+
   Promise.all([yesterday,lastSevenDays, lastweek, overall, candidates, presidents, counties, constituencies, mps, news, polls]).then(values => {
-	  console.log(values[10]);
-	  res.render('index', { 
-	  	title: 'Kenyan Elections Virtual Bets',
-	  	id: "top",
-	  	yesterdays: values[0],
-	  	lastSevenDays: values[1],
-	  	lastweek: values[2],
-	  	overall: values[3],
-	  	candidates: values[4],
-	  	presidents: values[5],
-	  	counties: values[6],
-	  	constituencies: values[7],
-	  	mps: values[8],
-	  	news: values[9],
-	  	polls: values[10]
-	  });
-  });
+  		res.render('index', { 
+		  	title: 'Kenyan Elections Virtual Bets',
+		  	id: "top",
+		  	yesterdays: values[0],
+		  	lastSevenDays: values[1],
+		  	lastweek: values[2],
+		  	overall: values[3],
+		  	candidates: values[4],
+		  	presidents: values[5],
+		  	counties: values[6],
+		  	constituencies: values[7],
+		  	mps: values[8],
+		  	news: values[9],
+		  	polls: values[10]
+		});
+	});
 });
 
 module.exports = router;

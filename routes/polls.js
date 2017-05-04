@@ -64,6 +64,21 @@ router.post('/update/:id',roles.admin, function(req, res, next) {
 	});
 });
 
+router.get('/getoptions', function(req, res, next){
+	PollOption.findAll({
+		where: {
+			pollid: poll.id
+		}
+	}).then(function(options){
+		//option.push(option.dataValues);
+		options.forEach(function(option){
+			choice.push(option.dataValues)
+		})
+		poll.dataValues['options'] = choice
+		res.json(poll.dataValues);
+	})
+})
+
 router.post('/create',roles.admin, function(req, res, next) {
 	var name = req.body.name;
 	var description = req.body.description;

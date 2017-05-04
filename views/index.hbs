@@ -146,14 +146,16 @@
                                 {{/each}}
                                 {{/if}}
                               </div>
-                              <div role="tabpanel" class="tab-pane bright" id="news" style="padding:20px;">
+                              <div role="tabpanel" class="tab-pane" id="news" style="padding:20px;">
                                 {{#if news}}
+                                <div class="panel panel-body">
                                 {{#each news}}
-                                  <div class="col-md-3 col-sm-6 col-xs-12 bright">
+                                  <div class="col-md-3 col-sm-6 col-xs-12">
                                     {{dataValues.name}}
-                                    {{dataValues.poll}}
+                                    {{{dataValues.desc}}}
                                   </div>
                                 {{/each}}
+                                </div>
                                 {{/if}}
                               </div>
                             </div>

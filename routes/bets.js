@@ -189,7 +189,7 @@ router.post('/compute',roles.auth,function(req, res, next){
 	        			})
 	        		});
 	        	}
-	        },1500);
+	        },1000);
 		}else{
 			res.json(2);
 		}

@@ -334,7 +334,7 @@
                 </script>         
             <script>
                 Vue.component('modal', {
-                  template: '#modal-template'
+                  template: '#modal-template',
                 });
                 function shuffle(array) {
                   var currentIndex = array.length, temporaryValue, randomIndex;
@@ -372,6 +372,9 @@
                         rstimage: '',
                         userId: ''
                     },
+                    mounted: function(){
+                        console.log("this part!");
+                    },
                     computed: {
                         totalAmount : function(){
                             var amount = 0;
@@ -379,7 +382,7 @@
                                 amount += parseFloat(this.candidates[i].odd);
                             }
                             return parseInt(amount * this.price);
-                        }
+                        },
                     },
                     methods: {
                         election: function(betId){
