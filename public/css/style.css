@@ -295,6 +295,14 @@ tr td:hover { background: #afb9c5; color: #666; } /* Hover cell effect! */
 input{
   color: #2b2b2b;
 }
+.newsbody a {
+  color: #b4f3fb; 
+    text-decoration: none;
+}
+.newsbody a:hover{
+  color: #6fa4ab; 
+  text-decoration: none;
+}
 /*
  * Table styles
  */
