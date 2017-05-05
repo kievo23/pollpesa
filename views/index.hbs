@@ -315,7 +315,7 @@
    <div class="col-md-2  col-sm-12 col-xs-12 no_padding no_margin" >
     <div class="panel panel-body  betslip" v-if="candidates.length > 0" id="betslip">
           <hr><h3>Bet Slip</h3> <i class="fa fa-money fa-2x" aria-hidden="true"></i>
-          <ul v-if="candidates">
+          <div v-if="candidates">
             <table class="table table-hover table-condensed table-responsive">
             <thead>
               <th>Names</th><th>Position</th><th>Odds</th>
@@ -324,7 +324,7 @@
             <td>\{{candidate.name}} </td><td>  \{{candidate.position}} </td><td> \{{candidate.odd}}</td>
             </tr>
             </table>
-          </ul>
+          </div>
             <div class="panel-footer">
             <form method="post" action="/bet/place" class="form-inline">
               <div class="form-group">
