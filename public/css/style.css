@@ -6,6 +6,9 @@ body {
   font: 14px ;
   font-family: pollpesa
 }
+html{
+      background-color: #3a5680;
+}
 #main > section{
       text-align: center;
 }
