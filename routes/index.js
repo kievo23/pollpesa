@@ -87,7 +87,7 @@ router.get('/', function(req, res, next) {
   var presidential = connection.query('select count(distinct "userId"),candidateid,c.name,c.odd,c.position from betdetails as d \
 	left join bets as b on b.id = d.betid \
 	left join candidates as c on c.id = d.candidateid \
-	where c.position = \'president\' group by candidateid, c.name, c.odd,c.position order by count DESC limit 5',
+	where "c"."regionId" = 97 group by candidateid, c.name, c.odd,c.position order by count DESC limit 5',
 	      { type: connection.QueryTypes.SELECT }
     );
   var overall = connection.query('select count(distinct "userId"),candidateid,c.name,c.odd,c.position from betdetails as d \
