@@ -84,11 +84,11 @@ router.get('/', function(req, res, next) {
 	group by candidateid, c.name, c.odd,c.position order by count DESC limit 5',
 	      { type: connection.QueryTypes.SELECT }
     );
-  var lastweek = connection.query('select count(distinct "userId"),candidateid,c.name,c.odd,c.position from betdetails as d \
+  var presidential = connection.query('select count(distinct "userId"),candidateid,c.name,c.odd,c.position from betdetails as d \
 	left join bets as b on b.id = d.betid \
 	left join candidates as c on c.id = d.candidateid \
 	where "d"."createdAt" >= \''+startOfLastWeek.format()+'\' AND "d"."createdAt" <= \''+endOfLastWeek.format()+'\' \
-	group by candidateid, c.name, c.odd,c.position order by count DESC limit 5',
+	AND c.position = \'president\' group by candidateid, c.name, c.odd,c.position order by count DESC limit 5',
 	      { type: connection.QueryTypes.SELECT }
     );
   var overall = connection.query('select count(distinct "userId"),candidateid,c.name,c.odd,c.position from betdetails as d \
@@ -117,13 +117,13 @@ router.get('/', function(req, res, next) {
   })
   var options = PollOption.findAll()
 
-  Promise.all([yesterday,lastSevenDays, lastweek, overall, candidates, presidents, counties, constituencies, mps, news, polls, options]).then(values => {
+  Promise.all([yesterday,lastSevenDays, presidential, overall, candidates, presidents, counties, constituencies, mps, news, polls, options]).then(values => {
   		res.render('index', { 
 		  	title: 'Kenyan Elections Virtual Bets',
 		  	id: "top",
 		  	yesterdays: values[0],
 		  	lastSevenDays: values[1],
-		  	lastweek: values[2],
+		  	presidential: values[2],
 		  	overall: values[3],
 		  	candidates: values[4],
 		  	presidents: values[5],
