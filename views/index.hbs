@@ -184,7 +184,7 @@
             <th>Name</th>
             <th>Position</th>
              <th>Region</th>
-            <th>Actions</th>
+            <th>Bet</th>
             <th>Edit</th>
             </tr>
           </thead>
@@ -198,7 +198,7 @@
                 <td class="betbutton">
                    <div id="ck-button">
                     <label>
-                        <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>{{dataValues.odd}}</span>
+                        <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>{{dataValues.odd}} Bet</span>
                      </label>
                   </div>
                 </td>
@@ -247,7 +247,7 @@
                     <td class="betbutton">
                        <div id="ck-button">
                         <label>
-                            <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>{{dataValues.odd}}</span>
+                            <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>{{dataValues.odd}} Bet</span>
                          </label>
                       </div>
                     </td>
@@ -293,7 +293,7 @@
                     <td class="betbutton">
                        <div id="ck-button">
                         <label>
-                            <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>{{dataValues.odd}}</span>
+                            <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>{{dataValues.odd}} Bet</span>
                          </label>
                       </div>
                     </td>
@@ -364,7 +364,7 @@
                                     {{dataValues.name}}
                                     {{{dataValues.description}}}
                                     <div class="panel panel-body" id="opinions">
-                                        <script id="options" type="text/x-handlebars-template">
+                                        <script id="options" type="text/x-template">
                                           <p>{{first}}</p>  <p>{{last}}</p>                                           
                                         </script>
                                     </div>

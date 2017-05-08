@@ -284,6 +284,7 @@
             <script src="/js/dataTables.responsive.js"></script>
             <script src="/js/skel.min.js"></script>
             <script src="/js/tinymce.min.js"></script>
+            <script src="/js/handlebars-v4.0.5.js"></script>
             <script src="/js/util.js"></script> <script type="text/javascript">
                 tinymce.init({ 
                     selector:'textarea',
@@ -306,6 +307,11 @@
                         "order": [[ 3, "desc" ]],
                         responsive: true
                     } );
+                    (function(){
+                        var source   = "<p>{{lastName}}, {{firstName}}</p>";
+                        var template = Handlebars.compile(source);
+                        console.log(template({firstName: "Alan", lastName: "Johnson"}));
+                    })();
                 });
 
                 
