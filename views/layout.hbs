@@ -401,16 +401,6 @@
                                 amount += parseFloat(this.candidates[i].odd);
                             }
                             return parseInt(amount * this.price);
-                        },
-                        isAdmin : function(){
-                            return this.role;
-                        },
-                        classEdit : function(){
-                            if(this.role == 1){
-                                return "show";
-                            }else{
-                                return "hide";
-                            }
                         }
                     },
                     methods: {
