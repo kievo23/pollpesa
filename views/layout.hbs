@@ -255,7 +255,7 @@
                                 <br>
                                 
                             </div>
-                            
+                            <input type="text" name="role" id="role" value="{{user.role}}">
                     </section>
 
                 </div>
@@ -271,7 +271,7 @@
                     </ul>
 
             </div>
-        </div>    
+          
             <!-- Scripts -->
             <script src="/js/vue.js"></script>
             <script src="/js/jquery-1.12.4.min.js"></script>
@@ -299,20 +299,7 @@
                       content_css: '//www.tinymce.com/css/codepen.min.css'
                 });
 
-                $(document).ready(function(){
-                    $('.candidates').DataTable({
-                        responsive: true
-                    });
-                    $('.bets').DataTable({
-                        "order": [[ 3, "desc" ]],
-                        responsive: true
-                    } );
-                    (function(){
-                        var source   = "<p>{{lastName}}, {{firstName}}</p>";
-                        var template = Handlebars.compile(source);
-                        console.log(template({firstName: "Alan", lastName: "Johnson"}));
-                    })();
-                });
+                
 
                 
             </script>   
@@ -347,7 +334,26 @@
                   </transition>
                 </script>         
             <script>
-                Vue.component('modal', {
+                $(document).ready(function(){
+                    $('.candidates').DataTable({
+                        responsive: true
+                    });
+                    $('.bets').DataTable({
+                        "order": [[ 3, "desc" ]],
+                        responsive: true
+                    } );
+                    (function(){
+                        var source   = "<p>{{lastName}}, {{firstName}}</p>";
+                        var template = Handlebars.compile(source);
+                        console.log(template({firstName: "Alan", lastName: "Johnson"}));
+                    })();
+
+                    $role=$('#role').val();
+                    if($role != 1){
+                        $('.isEdit').addClass("hide");
+                    }
+
+                    Vue.component('modal', {
                   template: '#modal-template',
                 });
                 function shuffle(array) {
@@ -397,6 +403,16 @@
                             }
                             return parseInt(amount * this.price);
                         },
+                        isAdmin : function(){
+                            return this.role;
+                        },
+                        classEdit : function(){
+                            if(this.role == 1){
+                                return "show";
+                            }else{
+                                return "hide";
+                            }
+                        }
                     },
                     methods: {
                         election: function(betId){
@@ -475,6 +491,9 @@
                         }
                     }
                 });
+                });
+                
         </script>
+        </div>  
     </body>
 </html>
