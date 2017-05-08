@@ -255,7 +255,7 @@
                                 <br>
                                 
                             </div>
-                            <input type="text" name="role" id="role" value="{{user.role}}">
+                            <input type="text" name="role" v-model="role" value="{{user.role}}">
                     </section>
 
                 </div>
@@ -299,7 +299,25 @@
                       content_css: '//www.tinymce.com/css/codepen.min.css'
                 });
 
-                
+                $(document).ready(function(){
+                    $('.candidates').DataTable({
+                        responsive: true
+                    });
+                    $('.bets').DataTable({
+                        "order": [[ 3, "desc" ]],
+                        responsive: true
+                    } );
+                    (function(){
+                        var source   = "<p>{{lastName}}, {{firstName}}</p>";
+                        var template = Handlebars.compile(source);
+                        console.log(template({firstName: "Alan", lastName: "Johnson"}));
+                    })();
+
+                    $role=$('#role').val();
+                    if($role != 1){
+                        $('.isEdit').addClass("hide");
+                    }
+                });
 
                 
             </script>   
@@ -334,26 +352,7 @@
                   </transition>
                 </script>         
             <script>
-                $(document).ready(function(){
-                    $('.candidates').DataTable({
-                        responsive: true
-                    });
-                    $('.bets').DataTable({
-                        "order": [[ 3, "desc" ]],
-                        responsive: true
-                    } );
-                    (function(){
-                        var source   = "<p>{{lastName}}, {{firstName}}</p>";
-                        var template = Handlebars.compile(source);
-                        console.log(template({firstName: "Alan", lastName: "Johnson"}));
-                    })();
-
-                    $role=$('#role').val();
-                    if($role != 1){
-                        $('.isEdit').addClass("hide");
-                    }
-
-                    Vue.component('modal', {
+                Vue.component('modal', {
                   template: '#modal-template',
                 });
                 function shuffle(array) {
@@ -491,8 +490,6 @@
                         }
                     }
                 });
-                });
-                
         </script>
         </div>  
     </body>
