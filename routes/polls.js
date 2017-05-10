@@ -10,7 +10,6 @@ var User = require(__dirname + '/../models/userModel');
 var connection = require(__dirname + '/../config/db');
 var roles = require(__dirname + '/../config/roles');
 var Polls = require(__dirname + '/../models/Poll');
-var Pollmdb = require(__dirname + '/../models/Pollm');
 var PollOption = require(__dirname + '/../models/Polloption');
 
 router.get('/',roles.auth,function(req,res,next){
