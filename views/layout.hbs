@@ -396,9 +396,15 @@
                                 amount += parseFloat(this.candidates[i].odd);
                             }
                             return parseInt(amount * this.price);
-                        }
+                        },
+
                     },
                     methods: {
+                        addToPrez: function(value){
+                            alert(value);
+                            console.log(value);
+                            this.cid.push(value);
+                        },
                         election: function(betId){
                             var app = this;
                             this.showProcess=true;
