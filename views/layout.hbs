@@ -183,8 +183,7 @@
 
                             -->
                             <ul style="list-style-type: none;padding:0px">
-                                <li><a href="/" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home"> Home</span></a></li>                                
-                                <li><a href="/candidate" id="candidate-link" class="skel-layers-ignoreHref"><span class="icon fa-users"> Candidates</span></a></li>
+                                <li><a href="/" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home"> Home</span></a></li>           
                                 <li><a href="/counties" id="candidate-link" class="skel-layers-ignoreHref"><span class="icon fa-bug">  Counties</span></a></li>
                                 {{#if user}}
                                 <li><a href="/bet" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th"> Bets 
@@ -193,6 +192,8 @@
                                     {{/if}}
                                 </span></a></li>
                                 {{#if user.role}}
+                                                     
+                                <li><a href="/candidate" id="candidate-link" class="skel-layers-ignoreHref"><span class="icon fa-users"> Candidates</span></a></li>
                                 <li><a href="/candidate/create" id="candidate-link" class="skel-layers-ignoreHref"><span class="icon fa-users">New Candidate</span></a></li>
                                 <li><a href="/region#region" id="region-link" class="skel-layers-ignoreHref"><span class="icon fa-bullseye">Region</span></a></li>  
                                 <li><a href="/category#category" id="category-link" class="skel-layers-ignoreHref"><span class="icon fa-certificate">Category</span></a></li>

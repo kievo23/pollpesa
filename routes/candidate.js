@@ -8,7 +8,7 @@ var roles = require(__dirname + '/../config/roles');
 var Bet = require(__dirname + '/../models/Bet');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/',roles.admin, function(req, res, next) {
 
 	var candidates = Candidate.findAll({ 
 	    where: {
@@ -98,6 +98,18 @@ router.get('/update/:id',roles.admin, function(req, res, next) {
 			id: req.params.id
 		});
 	});  
+});
+
+router.get('/delete/:id',roles.admin, function(req, res, next) {
+	var candidate = Candidate.findOne({
+		where: {
+            id: req.params.id
+        }
+	}).then(function(cand){
+		cand.destroy();
+		res.redirect('/candidate');
+	});
+	
 });
 
 router.post('/update',roles.admin, function(req, res, next) {

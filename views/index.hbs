@@ -216,7 +216,8 @@
                 </td>
 
                 <td class="isEdit" >
-                        <a href="candidate/update/{{dataValues.id}}">Edit</a>
+                        <a href="candidate/update/{{dataValues.id}}" title="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        <a href="candidate/delete/{{dataValues.id}}" title="delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                       </td>
               </tr>
             {{/each}}
@@ -264,7 +265,8 @@
                       </div>
                     </td>
                     <td class="isEdit">
-                            <a href="candidate/update/{{dataValues.id}}">Edit</a>
+                            <a href="candidate/update/{{dataValues.id}}" title="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>                            
+                        <a href="candidate/delete/{{dataValues.id}}">Delete</a>
                           </td>
                   </tr>
                 {{/each}}
@@ -310,7 +312,8 @@
                       </div>
                     </td>
                     <td class="isEdit">
-                            <a href="candidate/update/{{dataValues.id}}">Edit</a>
+                            <a href="candidate/update/{{dataValues.id}}"  title="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            <a href="candidate/delete/{{dataValues.id}}">Delete</a>
                           </td>
                   </tr>
                 {{/each}}
