@@ -6,8 +6,41 @@ var Region = require(__dirname + '/../models/Region');
 var Candidate = require(__dirname + '/../models/Candidate');
 var roles = require(__dirname + '/../config/roles');
 var Bet = require(__dirname + '/../models/Bet');
+var connection = require(__dirname + '/../config/db');
+var async = require('async'),
+    QueryBuilder = require('datatable');
 
 /* GET home page. */
+router.get('/ssr',function(req, res, next){
+	
+
+	var queries = {};
+	queries.recordsFiltered = "SELECT * FROM candidates";
+	queries.recordsTotal = "SELECT COUNT(id) FROM candidates";
+	
+	var candidates = Candidate.findAll({ 
+	    where: {
+			position: {
+				$in: ['Senator','Women Rep','Governor']
+			}
+		},
+		include: [
+	        { model: Region, as: 'region'}
+	    ]
+	});
+
+	var totalRecords = connection.query(queries.recordsTotal,
+	      { type: connection.QueryTypes.SELECT }
+    );
+
+	Promise.all([candidates,totalRecords]).then(values => {
+		var result = {};
+		result.data = values[0];
+		result.recordsTotal = values[1][0].count;
+		res.json(result);
+	});	
+});
+
 router.get('/',roles.admin, function(req, res, next) {
 
 	var candidates = Candidate.findAll({ 
