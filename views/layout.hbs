@@ -294,8 +294,10 @@
 
                 $(document).ready(function(){
                     $('.candidates').DataTable({
+                        "order": [[ 3, "asc" ]],
                         responsive: true
                     });
+
                     $('.bets').DataTable({
                         "order": [[ 3, "desc" ]],
                         responsive: true
