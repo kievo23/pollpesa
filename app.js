@@ -1,3 +1,13 @@
+const https = require('https');
+const fs = require('fs');
+
+
+const options = {
+  key: fs.readFileSync('privkey.pem','utf8'),
+  cert: fs.readFileSync('fullchain.pem','utf8')
+};
+
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -228,6 +238,10 @@ app.use(function(req, res, next) {
 
 
 //module.exports = app;
-app.listen(8080,function(){
+/*app.listen(8080,function(){
 	console.log("listening on port 8080");
-})
+})*/
+
+https.createServer(options, app).listen(8080,function(){
+  console.log("listening on port 8080");
+});
