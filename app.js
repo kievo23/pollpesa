@@ -1,4 +1,5 @@
 const https = require('https');
+const http = require('http');
 const fs = require('fs');
 
 
@@ -242,6 +243,13 @@ app.use(function(req, res, next) {
 	console.log("listening on port 8080");
 })*/
 
-https.createServer(options, app).listen(8080,function(){
-  console.log("listening on port 8080");
+const server = https.createServer(options, app).listen(8080, function(err) {
+  if (err) {
+    console.log(err);
+  } else {
+    const host = server.address().address;
+    const port = server.address().port;
+    console.log(`Server listening on ${host}:${port}`);
+  }
 });
+
