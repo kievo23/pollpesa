@@ -237,9 +237,10 @@ app.use(function(req, res, next) {
 
 
 //module.exports = app;
-/*app.listen(8080,function(){
-	console.log("listening on port 8080");
-})*/
+app.listen(8888,function(){
+	console.log("listening on port 8888");
+});
+
 const serverone = http.createServer(app).listen(8000, function(err) {
   if (err) {
     console.log(err);
