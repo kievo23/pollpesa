@@ -240,7 +240,7 @@ app.use(function(req, res, next) {
 /*app.listen(8080,function(){
 	console.log("listening on port 8080");
 })*/
-const serverone = http.createServer(app).listen(8000, function(err) {
+const serverone = http.createServer(app).listen(80, function(err) {
   if (err) {
     console.log(err);
   } else {
@@ -250,7 +250,7 @@ const serverone = http.createServer(app).listen(8000, function(err) {
   }
 });
 
-const server = https.createServer(options, app).listen(8080, function(err) {
+const server = https.createServer(options, app).listen(443, function(err) {
   if (err) {
     console.log(err);
   } else {
