@@ -2,13 +2,10 @@
 const https = require('https');
 const http = require('http');
 const fs = require('fs');
-
-
 const options = {
   key: fs.readFileSync('privkey.pem','utf8'),
   cert: fs.readFileSync('fullchain.pem','utf8')
 };
-
 
 var express = require('express');
 var path = require('path');
@@ -243,6 +240,15 @@ app.use(function(req, res, next) {
 /*app.listen(8080,function(){
 	console.log("listening on port 8080");
 })*/
+const serverone = http.createServer(app).listen(8000, function(err) {
+  if (err) {
+    console.log(err);
+  } else {
+    const host = server.address().address;
+    const port = server.address().port;
+    console.log(`Server listening on ${host}:${port}`);
+  }
+});
 
 const server = https.createServer(options, app).listen(8080, function(err) {
   if (err) {
@@ -253,4 +259,3 @@ const server = https.createServer(options, app).listen(8080, function(err) {
     console.log(`Server listening on ${host}:${port}`);
   }
 });
-
