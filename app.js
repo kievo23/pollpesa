@@ -234,13 +234,6 @@ app.use(function(req, res, next) {
 });
 
 
-
-
-//module.exports = app;
-app.listen(3000,function(){
-	console.log("listening on port 3000");
-});
-
 const serverone = http.createServer(app).listen(8000, function(err) {
   if (err) {
     console.log(err);
