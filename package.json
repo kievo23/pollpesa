@@ -33,6 +33,7 @@
   "description": "betting on the elections",
   "main": "app.js",
   "devDependencies": {
+    "vue-adsense": "^1.0.1",
     "webpack": "^2.3.3"
   },
   "keywords": [

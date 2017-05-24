@@ -13,7 +13,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Play and support your favourite candidate in Kenya today. more then 1000 different bets including multibets. See if your favourite president is winning. Your Vote counts.">
-        <meta name="author" content="Kelvin Chege M: AKA kickAss">
+        <meta name="author" content="Kelvin Chege M">
         <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
         <link href="/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="/css/ie8.css" />
@@ -202,15 +202,7 @@
                                 {{/if}}
                             </ul>
                         </nav>
-                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                        <!-- Leaderboard -->
-                        <ins class="adsbygoogle"
-                             style="display:inline-block;width:728px;height:90px"
-                             data-ad-client="ca-pub-9965055906014205"
-                             data-ad-slot="9252745178"></ins>
-                        <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
+                        
 
                 </div>
 
@@ -229,17 +221,7 @@
             
         <!-- Main -->
             <div id="main" class="col-md-10 col-sm-12 no_padding">
-
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- Leaderboard -->
-                <ins class="adsbygoogle"
-                     style="display:inline-block;width:728px;height:90px"
-                     data-ad-client="ca-pub-9965055906014205"
-                     data-ad-slot="9252745178"></ins>
-                <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-
+                <adsensediv></adsensediv>
                 <!-- Intro -->
                     <section id="{{id}}" class="oned">
                             {{#if errors}}
@@ -366,11 +348,18 @@
                       </div>
                     </div>
                   </transition>
-                </script>         
+                </script>   
+              <script type="text/x-template" id="adsense">
+                  <ins class="adsbygoogle" id="" 
+                     style="display:inline-block;width:728px;height:90px"
+                     data-ad-client="ca-pub-9965055906014205"
+                     data-ad-slot="9252745178"></ins>
+              </script>
+              <script type="text/x-template" id="me">
+                  <p>Kelvin Chege M</p>
+              </script>
             <script>
-                Vue.component('modal', {
-                  template: '#modal-template',
-                });
+                
                 function shuffle(array) {
                   var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -389,7 +378,12 @@
 
                   return array;
                 }
-                
+                Vue.component('adsensediv',{
+                    template: '#adsense',
+                });
+                Vue.component('modal', {
+                  template: '#modal-template',
+                });
                 var app = new Vue({
                     el: '#butterfly',
                     data: {
@@ -409,6 +403,7 @@
                     },
                     mounted: function(){
                         console.log("this part!");
+                        (window.adsbygoogle = window.adsbygoogle || []).push({});
                     },
                     computed: {
                         totalAmount : function(){
@@ -419,6 +414,11 @@
                             return parseInt(amount * this.price);
                         },
 
+                    },
+                    components: {
+                        adsensecontainer: {
+                            template: '#adsense'
+                        }
                     },
                     methods: {
                         addToPrez: function(value){
@@ -502,6 +502,7 @@
                         }
                     }
                 });
+                
         </script>
         </div>  
     </body>
