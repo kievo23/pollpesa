@@ -11,12 +11,11 @@ var async = require('async'),
     QueryBuilder = require('datatable');
 
 /* GET home page. */
-router.get('/ssr',function(req, res, next){
+router.get('/county',function(req, res, next){
 	
 
 	var queries = {};
-	queries.recordsFiltered = "SELECT * FROM candidates";
-	queries.recordsTotal = "SELECT COUNT(id) FROM candidates";
+	queries.recordsTotal = "SELECT COUNT(id) FROM candidates WHERE position ='Senator' OR position ='Women Rep' OR position ='Governor'";
 	
 	var candidates = Candidate.findAll({ 
 	    where: {
@@ -41,7 +40,34 @@ router.get('/ssr',function(req, res, next){
 	});	
 });
 
-router.get('/',roles.admin, function(req, res, next) {
+router.get('/constituency',function(req, res, next){
+	
+
+	var queries = {};
+	queries.recordsTotal = "SELECT COUNT(id) FROM candidates WHERE position ='MP'";
+	
+	var candidates = Candidate.findAll({ 
+	    where: {
+			position: 'MP'
+		},
+		include: [
+	        { model: Region, as: 'region'}
+	    ]
+	});
+
+	var totalRecords = connection.query(queries.recordsTotal,
+	      { type: connection.QueryTypes.SELECT }
+    );
+
+	Promise.all([candidates,totalRecords]).then(values => {
+		var result = {};
+		result.data = values[0];
+		result.recordsTotal = values[1][0].count;
+		res.json(result);
+	});	
+});
+
+router.get('/', function(req, res, next) {
 
 	var candidates = Candidate.findAll({ 
 	    where: {

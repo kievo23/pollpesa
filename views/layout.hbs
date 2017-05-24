@@ -376,6 +376,37 @@
 
                   return array;
                 }
+
+
+                $(document).ready(function() {
+                    $('#county').DataTable( {
+                        "ajax": "/candidate/county",
+                        "columns": [
+                            { "data": "name" },
+                            { "data": "position" },
+                            { "data": "odd",
+                                render: function(data, type, row){
+                                    return '<div id="ck-button"><label><input type="checkbox" id="cid" name="cid" value="2"><span>'+ data +' Bet</span></label></div>';
+                                }
+                            }
+                        ]
+                    });
+
+                    $('#constituency').DataTable( {
+                        "ajax": "/candidate/constituency",
+                        "columns": [
+                            { "data": "name" },
+                            { "data": "position" },
+                            { "data": "odd",
+                                render: function(data, type, row){
+                                    return '<div id="ck-button"><label><input type="checkbox" id="cid" name="cid" value="2"><span>'+ data +' Bet</span></label></div>';
+                                }
+                            }
+                        ]
+                    } );
+                } );
+
+
                 Vue.component('adsensediv',{
                     template: '#adsense',
                 });

@@ -239,38 +239,21 @@
                 {{/if}}
             </select>
           </p>
-            <table class="table table-hover table-condensed table-responsive candidates">
+            <table id="county" class="display" cellspacing="0" width="100%" class="table table-hover table-condensed table-responsive candidates">
               <thead>
-              <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Region</th>
-                <th>Bet</th>
-                <th class="isEdit">Edit</th>
-                </tr>
-              </thead>
-              <tbody>
-              {{#if candidates}}
-                {{#each candidates}}
                   <tr>
-                    <td>{{dataValues.name}}</td>
-                    <td>{{dataValues.position}}</td>
-                    <td>{{dataValues.region.name}}</td>
-                    <td class="betbutton">
-                       <div id="ck-button">
-                        <label>
-                            <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>{{dataValues.odd}} Bet</span>
-                         </label>
-                      </div>
-                    </td>
-                    <td class="isEdit">
-                            <a href="candidate/update/{{dataValues.id}}" title="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>                            
-                        <a href="candidate/delete/{{dataValues.id}}">Delete</a>
-                          </td>
+                      <th>Name</th>
+                      <th>Position</th>
+                      <th>Odd</th>
                   </tr>
-                {{/each}}
-              {{/if}}
-              </tbody>
+              </thead>
+              <tfoot>
+                  <tr>
+                      <th>Name</th>
+                      <th>Position</th>
+                      <th>Odd</th>
+                  </tr>
+              </tfoot>
             </table>
           </div>  
       </div>
@@ -286,41 +269,25 @@
                 {{/if}}
             </select>
           </p>
-            <table class="table table-hover table-condensed table-responsive candidates">
+            <table id="constituency" class="display" cellspacing="0" width="100%" class="table table-hover table-condensed table-responsive candidates">
               <thead>
-              <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Region</th>
-                <th>Bet</th>
-                <th class="isEdit">Edit</th>
-                </tr>
-              </thead>
-              <tbody>
-              {{#if mps}}
-                {{#each mps}}
                   <tr>
-                    <td>{{dataValues.name}}</td>
-                    <td>{{dataValues.position}}</td>
-                    <td>{{dataValues.region.name}}</td>
-                    <td class="betbutton">
-                       <div id="ck-button">
-                        <label>
-                            <input v-model="cid" type="checkbox" id="cid" name="cid" value="{{dataValues.id}}" @click=candidate><span>{{dataValues.odd}} Bet</span>
-                         </label>
-                      </div>
-                    </td>
-                    <td class="isEdit">
-                            <a href="candidate/update/{{dataValues.id}}"  title="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                            <a href="candidate/delete/{{dataValues.id}}">Delete</a>
-                          </td>
+                      <th>Name</th>
+                      <th>Position</th>
+                      <th>Odd</th>
                   </tr>
-                {{/each}}
-              {{/if}}
-              </tbody>
+              </thead>
+              <tfoot>
+                  <tr>
+                      <th>Name</th>
+                      <th>Position</th>
+                      <th>Odd</th>
+                  </tr>
+              </tfoot>
             </table>
           </div>  
       </div>
+
     </div>
     
   </div>
