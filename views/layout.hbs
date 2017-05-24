@@ -384,6 +384,11 @@
                         "columns": [
                             { "data": "name" },
                             { "data": "position" },
+                            { "data": "region",
+                                render: function(data, type, row){
+                                    return  data.name;
+                                }
+                            },
                             { "data": "odd",
                                 render: function(data, type, row){
                                     return '<div id="ck-button"><label><input type="checkbox" id="cid" name="cid" value="2"><span>'+ data +' Bet</span></label></div>';
@@ -397,6 +402,11 @@
                         "columns": [
                             { "data": "name" },
                             { "data": "position" },
+                            { "data": "region",
+                                render: function(data, type, row){
+                                    return  data.name;
+                                }
+                            },
                             { "data": "odd",
                                 render: function(data, type, row){
                                     return '<div id="ck-button"><label><input type="checkbox" id="cid" name="cid" value="2"><span>'+ data +' Bet</span></label></div>';
