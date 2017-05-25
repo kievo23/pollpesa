@@ -264,7 +264,48 @@
 
             </div>
           
-            <!-- Scripts -->
+            
+                
+        </div> 
+        <script type="text/x-template" id="modal-template">
+                  <transition name="modal">
+                    <div class="modal-mask">
+                      <div class="modal-wrapper">
+                        <div class="modal-container">
+
+                          <div class="modal-header">
+                            <slot name="header">
+                              default header
+                            </slot>
+                          </div>
+
+                          <div class="modal-body">
+                            <slot name="body">
+                              
+                            </slot>
+                          </div>
+
+                          <div class="modal-footer">
+                            <slot name="footer">
+                              <button class="btn btn-default modal-default-button" @click="$emit('close')">
+                                close
+                              </button>
+                            </slot>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </transition>
+                </script>   
+              <script type="text/x-template" id="adsense">
+                <div class="statistics">
+                  <ins class="adsbygoogle" id="" 
+                     style="display:inline-block;width:728px;height:90px"
+                     data-ad-client="ca-pub-9965055906014205"
+                     data-ad-slot="9252745178"></ins>
+                </div>
+              </script>
+        <!-- Scripts -->
             <script src="/js/vue.js"></script>
             <script src="/js/jquery-1.12.4.min.js"></script>
 
@@ -319,46 +360,8 @@
                 });
 
                 
-            </script>   
-                <script type="text/x-template" id="modal-template">
-                  <transition name="modal">
-                    <div class="modal-mask">
-                      <div class="modal-wrapper">
-                        <div class="modal-container">
-
-                          <div class="modal-header">
-                            <slot name="header">
-                              default header
-                            </slot>
-                          </div>
-
-                          <div class="modal-body">
-                            <slot name="body">
-                              
-                            </slot>
-                          </div>
-
-                          <div class="modal-footer">
-                            <slot name="footer">
-                              <button class="btn btn-default modal-default-button" @click="$emit('close')">
-                                close
-                              </button>
-                            </slot>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </transition>
-                </script>   
-              <script type="text/x-template" id="adsense">
-                <div class="statistics">
-                  <ins class="adsbygoogle" id="" 
-                     style="display:inline-block;width:728px;height:90px"
-                     data-ad-client="ca-pub-9965055906014205"
-                     data-ad-slot="9252745178"></ins>
-                </div>
-              </script>
-            <script>
+            </script>    
+        <script>
                 
                 function shuffle(array) {
                   var currentIndex = array.length, temporaryValue, randomIndex;
@@ -441,6 +444,13 @@
                         result: '',
                         rstimage: '',
                         userId: '',
+                    },
+                    ajaxRequest() {
+                        //this should push into your components array
+                        // example:
+                        /*$.ajax().done(function(data) {
+                            this.components.push(data);
+                        })*/
                     },
                     mounted: function(){
                         console.log("this part!");
@@ -540,6 +550,5 @@
                 });
                 
         </script>
-        </div>  
     </body>
 </html>
