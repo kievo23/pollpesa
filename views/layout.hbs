@@ -302,6 +302,46 @@
                      data-ad-slot="9252745178"></ins>
                 </div>
               </script>
+              <script type="text/x-template" id ="county-template">
+                 <table id="county" cellspacing="0" width="100%" class="display table table-hover table-condensed table-responsive candidates">
+                    <thead>
+                       <tr>
+                          <th>Name</th>
+                          <th>Position</th>
+                          <th>Region</th>
+                          <th>Odd</th>
+                       </tr>
+                    </thead>
+                    <tfoot>
+                       <tr>
+                          <th>Name</th>
+                          <th>Position</th>
+                          <th>Region</th>
+                          <th>Odd</th>
+                       </tr>
+                    </tfoot>
+                 </table>
+              </script>
+              <script type="text/x-template" id ="constituency-template">
+                 <table id="constituency" cellspacing="0" width="100%" class=" display table table-hover table-condensed table-responsive candidates">
+                    <thead>
+                       <tr>
+                          <th>Name</th>
+                          <th>Position</th>
+                          <th>Region</th>
+                          <th>Odd</th>
+                       </tr>
+                    </thead>
+                    <tfoot>
+                       <tr>
+                          <th>Name</th>
+                          <th>Position</th>
+                          <th>Region</th>
+                          <th>Odd</th>
+                       </tr>
+                    </tfoot>
+                 </table>
+              </script>
         <!-- Scripts -->
             <script src="/js/vue.js"></script>
             <script src="/js/jquery-1.12.4.min.js"></script>
@@ -379,45 +419,20 @@
                   return array;
                 }
 
+                Vue.component('county',{
+                    template: '#county-template',
+                    props: ['county'],
+                    ready: function(){
+                        this.$parent.county();
+                    }
+                });
 
-                $(document).ready(function() {
-                    $('#county').DataTable( {
-                        "ajax": "/candidate/county",
-                        "columns": [
-                            { "data": "name" },
-                            { "data": "position" },
-                            { "data": "region",
-                                render: function(data, type, row){
-                                    return  data.name;
-                                }
-                            },
-                            { "data": "odd",
-                                render: function(data, type, row){
-                                    return '<div id="ck-button"><label><input type="checkbox" id="cid" name="cid" value="2"><span>'+ data +' Bet</span></label></div>';
-                                }
-                            }
-                        ]
-                    });
+                Vue.component('constituency',{
+                    template: '#constituency-template',
+                    methods: {
 
-                    $('#constituency').DataTable( {
-                        "ajax": "/candidate/constituency",
-                        "columns": [
-                            { "data": "name" },
-                            { "data": "position" },
-                            { "data": "region",
-                                render: function(data, type, row){
-                                    return  data.name;
-                                }
-                            },
-                            { "data": "odd",
-                                render: function(data, type, row){
-                                    return '<div id="ck-button"><label><input type="checkbox" id="cid" name="cid" value="2"><span>'+ data +' Bet</span></label></div>';
-                                }
-                            }
-                        ]
-                    } );
-                } );
-
+                    }
+                });
 
                 Vue.component('adsensediv',{
                     template: '#adsense',
@@ -441,6 +456,7 @@
                         result: '',
                         rstimage: '',
                         userId: '',
+                        cands: {}
                     },
                     ajaxRequest() {
                         //this should push into your components array
@@ -451,6 +467,8 @@
                     },
                     mounted: function(){
                         console.log("this part!");
+                        this.constituency();
+                        this.county();
                         (window.adsbygoogle = window.adsbygoogle || []).push({});
                     },
                     computed: {
@@ -462,6 +480,10 @@
                             return parseInt(amount * this.price);
                         },
 
+                    },
+                    updated: function(){
+                        this.constituency();
+                        this.county();
                     },
                     methods: {
                         addToPrez: function(value){
@@ -542,9 +564,51 @@
                               .catch(function (error) {
                                 console.log(error);
                               });
-                        }
+                        },
+                        county: function(){
+                            var ap = this;
+                            $('#county').DataTable( {
+                                "ajax": '/candidate/county',
+                                "columns": [
+                                    { "data": "name" },
+                                    { "data": "position" },
+                                    { "data": "region",
+                                        render: function(data, type, row){
+                                            return  data.name;
+                                        }
+                                    },
+                                    { "data": "odd",
+                                        render: function(data, type, row){
+                                            return '<div id="ck-button"><label><input type="checkbox" id="cid" name="cid" value="2"><span>'+ data +' Bet</span></label></div>';
+                                        }
+                                    }
+                                ]
+                            });
+                        },
+                        constituency: function(){
+                            var ap = this;
+                            $('#constituency').DataTable( {
+                                "ajax": "/candidate/constituency",
+                                "columns": [
+                                    { "data": "name" },
+                                    { "data": "position" },
+                                    { "data": "region",
+                                        render: function(data, type, row){
+                                            return  data.name;
+                                        }
+                                    },
+                                    { "data": "odd",
+                                        render: function(data, type, row){
+                                            return '<div id="ck-button"><label><input type="checkbox" id="cid" name="cid" value="2"><span>'+ data +' Bet</span></label></div>';
+                                        }
+                                    }
+                                ]
+                            });
+                        },
                     }
                 });
+
+                
                 
         </script>
     </body>
