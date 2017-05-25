@@ -369,33 +369,6 @@
                       content_css: '//www.tinymce.com/css/codepen.min.css'
                 });
 
-                $(document).ready(function(){
-                    $('.candidates').DataTable({
-                        "order": [[ 3, "asc" ]],
-                        responsive: true
-                    });
-
-                    $('.presidents').DataTable({
-                        "order": [[ 0, "desc" ]],
-                        responsive: true
-                    });
-
-                    $('.bets').DataTable({
-                        "order": [[ 3, "desc" ]],
-                        responsive: true
-                    } );
-                    (function(){
-                        var source   = "<p>{{lastName}}, {{firstName}}</p>";
-                        var template = Handlebars.compile(source);
-                        console.log(template({firstName: "Alan", lastName: "Johnson"}));
-                    })();
-
-                    $role=$('#role').val();
-                    if($role != 1){
-                        $('.isEdit').addClass("hide");
-                    }
-                });
-
                 
             </script>    
         <script>
@@ -465,6 +438,11 @@
                             this.components.push(data);
                         })*/
                     },
+                    watch: {
+                        cid: function(){
+                            this.candidate();
+                        }
+                    },
                     mounted: function(){
                         console.log("this part!");
                         this.constituency();
@@ -480,11 +458,6 @@
                             return parseInt(amount * this.price);
                         },
 
-                    },
-                    updated: function(){
-                        this.constituency();
-                        this.county();
-                        console.log("dom updated");
                     },
                     methods: {
                         addToPrez: function(value){
@@ -580,7 +553,7 @@
                                     },
                                     { "data": "odd",
                                         render: function(data, type, row){
-                                            return '<div id="ck-button"><label><input type="checkbox" id="cid" name="cid" value="2"><span>'+ data +' Bet</span></label></div>';
+                                            return '<div id="ck-button"><label><input type="checkbox" id="cidtwo" name="cidtwo" value="'+row.id+'"><span>'+ data +' Bet</span></label></div>';
                                         }
                                     }
                                 ]
@@ -600,7 +573,7 @@
                                     },
                                     { "data": "odd",
                                         render: function(data, type, row){
-                                            return '<div id="ck-button"><label><input type="checkbox" id="cid" name="cid" value="2"><span>'+ data +' Bet</span></label></div>';
+                                            return '<div id="ck-button"><label><input type="checkbox" id="cidtwo" name="cidtwo" value="'+row.id+'"><span>'+ data +' Bet</span></label></div>';
                                         }
                                     }
                                 ]
@@ -609,7 +582,30 @@
                     }
                 });
 
-                
+                $(document).ready(function(){
+                    $('.candidates').DataTable({
+                        "order": [[ 3, "asc" ]],
+                        responsive: true
+                    });
+
+                    $('.presidents').DataTable({
+                        "order": [[ 0, "desc" ]],
+                        responsive: true
+                    });
+
+                    $('.bets').DataTable({
+                        "order": [[ 3, "desc" ]],
+                        responsive: true
+                    } );
+
+                    $role=$('#role').val();
+                    if($role != 1){
+                        $('.isEdit').addClass("hide");
+                    }
+                    $('div#mainnotlogged').on('click','#cidtwo',function(){
+                        app.cid.push($(this).val());
+                    });
+                });
                 
         </script>
     </body>
