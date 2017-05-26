@@ -590,7 +590,10 @@
                     $('div#mainnotlogged').on('click','#cidtwo',function(){
                         app.cid.push($(this).val());
                     });
-                    $('div#mainnotlogged').on('change','select#county',function(){
+                    $('div#mainnotlogged').on('change','#countyselect',function(){
+                        alert($(this).val());
+                    });
+                    $('div#mainnotlogged').on('change','#constituencyselect',function(){
                         alert($(this).val());
                     });
                 });
