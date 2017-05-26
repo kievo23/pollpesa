@@ -642,7 +642,8 @@
                         app.countysort(region);
                     });
                     $('div#mainnotlogged').on('change','#constituencyselect',function(){
-                        alert($(this).val());
+                        var region = $(this).val();
+                        app.constituencysort(region);
                     });
                 });
                 
