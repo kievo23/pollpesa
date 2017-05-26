@@ -544,10 +544,60 @@
                                 ]
                             });
                         },
+                        countysort: function(id){
+                            var ap = this;
+                            $('#county').DataTable( {
+                                "ajax": {
+                                    "url": "/candidate/county",
+                                    "data": {
+                                        "id": id
+                                    }
+                                },
+                                "columns": [
+                                    { "data": "name" },
+                                    { "data": "position" },
+                                    { "data": "region",
+                                        render: function(data, type, row){
+                                            return  data.name;
+                                        }
+                                    },
+                                    { "data": "odd",
+                                        render: function(data, type, row){
+                                            return '<div id="ck-button"><label><input type="checkbox" id="cidtwo" name="cidtwo" value="'+row.id+'"><span>'+ data +' Bet</span></label></div>';
+                                        }
+                                    }
+                                ]
+                            });
+                        },
                         constituency: function(){
                             var ap = this;
                             $('#constituency').DataTable( {
                                 "ajax": "/candidate/constituency",
+                                "columns": [
+                                    { "data": "name" },
+                                    { "data": "position" },
+                                    { "data": "region",
+                                        render: function(data, type, row){
+                                            return  data.name;
+                                        }
+                                    },
+                                    { "data": "odd",
+                                        render: function(data, type, row){
+                                            return '<div id="ck-button"><label><input type="checkbox" id="cidtwo" name="cidtwo" value="'+row.id+'"><span>'+ data +' Bet</span></label></div>';
+                                        }
+                                    }
+                                ]
+                            });
+                        },
+                        constituencysort: function(id){
+                            var ap = this;
+                            $('#constituency').DataTable( {
+                                "ajax": {
+                                    "url": "/candidate/constituency",
+                                    "data": {
+                                        "id": id
+                                    }
+                                },
                                 "columns": [
                                     { "data": "name" },
                                     { "data": "position" },
@@ -591,7 +641,8 @@
                         app.cid.push($(this).val());
                     });
                     $('div#mainnotlogged').on('change','#countyselect',function(){
-                        alert($(this).val());
+                        var region = $(this).val();
+                        app.countysort(region);
                     });
                     $('div#mainnotlogged').on('change','#constituencyselect',function(){
                         alert($(this).val());
