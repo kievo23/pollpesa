@@ -546,6 +546,7 @@
                         },
                         countysort: function(id){
                             var ap = this;
+                            $('#county').DataTable().destroy();
                             $('#county').DataTable( {
                                 "ajax": {
                                     "url": "/candidate/county",
@@ -592,6 +593,7 @@
                         },
                         constituencysort: function(id){
                             var ap = this;
+                            $('#constituency').DataTable().destroy();
                             $('#constituency').DataTable( {
                                 "ajax": {
                                     "url": "/candidate/constituency",
