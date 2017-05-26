@@ -40,6 +40,35 @@ router.get('/county',function(req, res, next){
 	});	
 });
 
+router.get('/county/:id',function(req, res, next){
+	
+
+	var queries = {};
+	queries.recordsTotal = "SELECT COUNT(id) FROM candidates WHERE position ='Senator' OR position ='Women Rep' OR position ='Governor'";
+	
+	var candidates = Candidate.findAll({ 
+	    where: {
+			position: {
+				$in: ['Senator','Women Rep','Governor']
+			}
+		},
+		include: [
+	        { model: Region, as: 'region',where: {'id': req.params.id}}
+	    ]
+	});
+
+	var totalRecords = connection.query(queries.recordsTotal,
+	      { type: connection.QueryTypes.SELECT }
+    );
+
+	Promise.all([candidates,totalRecords]).then(values => {
+		var result = {};
+		result.data = values[0];
+		result.recordsTotal = values[1][0].count;
+		res.json(result);
+	});	
+});
+
 router.get('/constituency',function(req, res, next){
 	
 
@@ -52,6 +81,33 @@ router.get('/constituency',function(req, res, next){
 		},
 		include: [
 	        { model: Region, as: 'region'}
+	    ]
+	});
+
+	var totalRecords = connection.query(queries.recordsTotal,
+	      { type: connection.QueryTypes.SELECT }
+    );
+
+	Promise.all([candidates,totalRecords]).then(values => {
+		var result = {};
+		result.data = values[0];
+		result.recordsTotal = values[1][0].count;
+		res.json(result);
+	});	
+});
+
+router.get('/constituency/:id',function(req, res, next){
+	
+
+	var queries = {};
+	queries.recordsTotal = "SELECT COUNT(id) FROM candidates WHERE position ='MP'";
+	
+	var candidates = Candidate.findAll({ 
+	    where: {
+			position: 'MP'
+		},
+		include: [
+	        { model: Region, as: 'region',where: {'id': req.params.id}}
 	    ]
 	});
 

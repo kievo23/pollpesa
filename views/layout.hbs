@@ -392,20 +392,6 @@
                   return array;
                 }
 
-                Vue.component('county',{
-                    template: '#county-template',
-                    props: ['county'],
-                    ready: function(){
-                        this.$parent.county();
-                    }
-                });
-
-                Vue.component('constituency',{
-                    template: '#constituency-template',
-                    methods: {
-
-                    }
-                });
 
                 Vue.component('adsensediv',{
                     template: '#adsense',
@@ -444,7 +430,6 @@
                         }
                     },
                     mounted: function(){
-                        console.log("this part!");
                         this.constituency();
                         this.county();
                         (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -604,6 +589,9 @@
                     }
                     $('div#mainnotlogged').on('click','#cidtwo',function(){
                         app.cid.push($(this).val());
+                    });
+                    $('div#mainnotlogged').on('change','select#county',function(){
+                        alert($(this).val());
                     });
                 });
                 
