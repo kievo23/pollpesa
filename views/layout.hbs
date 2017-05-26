@@ -549,7 +549,7 @@
                             $('#county').DataTable().destroy();
                             $('#county').DataTable( {
                                 "ajax": {
-                                    "url": "/candidate/county",
+                                    "url": "/candidate/county/"+id,
                                     "data": {
                                         "id": id
                                     }
@@ -596,7 +596,7 @@
                             $('#constituency').DataTable().destroy();
                             $('#constituency').DataTable( {
                                 "ajax": {
-                                    "url": "/candidate/constituency",
+                                    "url": "/candidate/constituency/"+id,
                                     "data": {
                                         "id": id
                                     }
